@@ -78,13 +78,13 @@ body.omg {
 /*  */
 .singles .t1.p1.container {
   left: 623px;
-  top: 1022px;
+  top: 1021px;
 }
 
 /*  */
 .singles .t2.p1.container {
   left: 1070px;
-  top: 1022px;
+  top: 1021px;
 }
 
 .doubles .t1.p1.container {
@@ -132,7 +132,8 @@ body.omg {
   background-repeat: no-repeat;
   position: absolute;
   color: var(--text-color);
-  background: var(--bg-color);
+  /* background: var(--bg-color); */
+  background: blue;
   clip-path: polygon(30px 0%, 100% 0%, calc(100% - 30px) 100%, 0% 100%);
 }
 
@@ -163,11 +164,13 @@ body.omg {
   width: 100px;
   height: 100px;
   margin: 8px;
-  background-image: url("../logo.png");
+  /* background-image: url("../logo.png"); */
+  background-image: url("./org_bsc.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   flex-grow: 0;
+  display: none;
 }
 
 .t1 .sponsor {
@@ -208,6 +211,7 @@ body.omg {
 
 .flagcountry .text:not(.text_empty), .flagstate .text:not(.text_empty) {
   background-color: var(--bg-color);
+  background-color: lime;
   border-radius: 6px;
   padding-left: 6px;
   box-sizing: border-box;
@@ -258,12 +262,14 @@ body.omg {
   overflow: hidden;
   display: flex;
   box-sizing: border-box;
-  border-radius: var(--border-radius);
-  background: var(--bg-color);
+  /* border-radius: var(--border-radius); */
+  /* background: var(--bg-color); */
+  background: rgba(0,0,0,0.9);
   filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.12))
     drop-shadow(0 3px 1px rgba(0, 0, 0, 0.14))
     drop-shadow(0 1px 5px rgba(0, 0, 0, 0.12))
     drop-shadow(0 -1px 2px rgba(0, 0, 0, 0.1));
+  clip-path: polygon(0% 0%, 100% 0%, calc(100% - 18px) 100%, 18px 100%);
 }
 
 .info.material_container {
@@ -272,7 +278,7 @@ body.omg {
   background-position: center;
   text-transform: uppercase;
   box-sizing: border-box;
-  font-size: 22px;
+  font-size: 20px;
 }
 
 .info.material_container_inner {
@@ -290,6 +296,8 @@ body.omg {
 .info.material_container.middle {
   left: 16px;
   top: 16px;
+  /* left: 848px; */
+  /* top: 200px; */
   display: flex;
   flex-direction: row;
   gap: 2px;
@@ -301,7 +309,7 @@ body.omg {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 300px;
+  width: 256px;
   text-align: justify;
   align-items: center;
   overflow: hidden;
@@ -310,14 +318,16 @@ body.omg {
 }
 
 .info.material_container.middle .tournament_name {
-  max-width: 100%;
-  font-size: 26px;
+  /* max-width: 100%;
+  font-size: 26px; */
+  display: none;
 }
 
 .info.material_container.middle .phase {
-  max-width: 100%;
+  /* max-width: 100%;
   font-size: 16px;
-  letter-spacing: 4px;
+  letter-spacing: 4px; */
+  display: none;
 }
 
 .info.material_container.middle .match {
@@ -325,6 +335,7 @@ body.omg {
   font-size: 22px;
   letter-spacing: 3px;
   opacity: 1;
+  /* display: none; */
 }
 
 .info.doubles.material_container {
