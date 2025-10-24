@@ -9,18 +9,34 @@ body {
   height: 1080px;
 }
 
+/* dev testing */
+body.omg {
+  background-image:
+    url("./p+_example.png"),
+    /* url("./p+_test_css.png"), */
+    /* url("./p+_test_sss.png"), */
+    url("./p+_test_match.png"),
+    /* url("./p+_test_rss1.png"), */
+    /* url("./p+_test_rss2.png"), */
+    /* url("./p+_test_rss3.png"), */
+    /* url("./p+_test_rss4.png"), */
+    /* url("./p+_test_rss5.png"), */
+    url("./p+_background.png");
+  background-repeat: no-repeat;
+}
+
 .container {
-  width: 350px;
-  height: 38px;
+  width: 256px;
+  height: 36px;
   background-size: cover;
   background-repeat: no-repeat;
   position: absolute;
-  color: var(--text-color);
+  /* color: var(--text-color); */
   z-index: 9;
-  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.12))
+  /* filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.12))
     drop-shadow(0 3px 1px rgba(0, 0, 0, 0.14))
     drop-shadow(0 1px 5px rgba(0, 0, 0, 0.12))
-    drop-shadow(0 -1px 2px rgba(0, 0, 0, 0.1));
+    drop-shadow(0 -1px 2px rgba(0, 0, 0, 0.1)); */
 }
 
 .container .bg {
@@ -29,41 +45,46 @@ body {
   right: 0;
   width: 100%;
   height: 100%;
-  clip-path: polygon(24px 0%, 100% 0%, calc(100% - 24px) 100%, 0% 100%);
+  clip-path: polygon(0% 0%, 100% 0%, calc(100% - 18px) 100%, 18px 100%);
 }
 
 .container .bg > div {
-  background: var(--bg-color);
+  /* background: var(--bg-color); */
+  background: rgba(0,0,0,0.9);
   width: 100%;
   height: 100%;
   clip-path: polygon(
-    27px 4px,
-    calc(100% - 46px) 4px,
-    calc(100% - 66px) calc(100% - 4px),
-    7px calc(100% - 4px)
+    4px 2px,
+    calc(100% - 4px) 2px,
+    calc(100% - 20px) calc(100% - 2px),
+    20px calc(100% - 2px)
   );
 }
 
 .container.t1 .bg {
-  background: var(--p1-score-bg-color);
+  /* background: var(--p1-score-bg-color); */
+  background: rgba(255,255,255,0.5) !important;
 }
 
 .container.t2 .bg {
-  background: var(--p2-score-bg-color);
+  /* background: var(--p2-score-bg-color); */
+  background: rgba(255,255,255,0.5) !important;
 }
 
 .doubles .container {
   transform: scaleX(0.9);
 }
 
+/*  */
 .singles .t1.p1.container {
-  left: 467px;
-  top: 997px;
+  left: 623px;
+  top: 1022px;
 }
 
+/*  */
 .singles .t2.p1.container {
-  left: 1207px;
-  top: 997px;
+  left: 1070px;
+  top: 1022px;
 }
 
 .doubles .t1.p1.container {
@@ -89,15 +110,15 @@ body {
 .container .name {
   color: var(--text-color);
   position: absolute;
-  left: 28px;
+  left: 20px;
   top: 2px;
-  width: 222px;
-  height: 34px;
-  font-size: 26px;
+  width: 212px;
+  height: 32px;
+  font-size: 20px;
   padding-left: 2px;
   padding-right: 2px;
-  justify-content: left;
-  text-transform: uppercase;
+  /* justify-content: center; */
+  /* text-transform: uppercase; */
   z-index: 999;
 }
 
@@ -150,11 +171,13 @@ body {
 }
 
 .t1 .sponsor {
-  color: var(--p1-sponsor-color);
+  /* color: var(--p1-sponsor-color); */
+  color: rgb(128,128,128);
 }
 
 .t2 .sponsor {
-  color: var(--p2-sponsor-color);
+  /* color: var(--p2-sponsor-color); */
+  color: rgb(128,128,128);
 }
 
 .flag {
@@ -173,14 +196,14 @@ body {
   position: absolute;
   top: 8px;
   left: -36px;
-  transform: translateX(-100%); // align right
+  transform: translateX(-100%); /* align right */
 }
 
 .flagstate {
   position: absolute;
   top: 40px;
   left: -20px;
-  transform: translateX(-100%); // align right
+  transform: translateX(-100%); /* align right */
 }
 
 .flagcountry .text:not(.text_empty), .flagstate .text:not(.text_empty) {
@@ -195,7 +218,7 @@ body {
   padding-right: 6px;
 }
 
-.score {
+/* .score {
   position: absolute;
   width: 30px;
   height: 37px;
@@ -206,7 +229,7 @@ body {
   top: 1px;
   right: 18px;
   color: var(--p1-score-color);
-}
+} */
 
 .sponsor-container {
   position: absolute;
