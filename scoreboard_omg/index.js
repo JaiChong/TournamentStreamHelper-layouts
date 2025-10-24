@@ -3,22 +3,26 @@ LoadEverything().then(() => {
 
   let startingAnimation = gsap
     .timeline({ paused: true })
-    .from(
-      [".container"],
-      { duration: 1, opacity: "0", x: "-40px", ease: "power2.inOut" },
-      0
-    )
-    .from(
-      [".twitter-container"],
-      { duration: 1, opacity: "0", x: "+80px", ease: "power2.inOut" },
-      0
-    )
-    .from(".mask", { width: 0, duration: 1, ease: "power2.inOut" }, 0)
-    .from(
-      ".doubles .info",
-      { opacity: 0, duration: 0.5, ease: "power2.inOut" },
-      0.8
-    );
+    // .from(
+    //   [".container"],
+    //   { duration: 1, opacity: "0", x: "-40px", ease: "power2.inOut" },
+    //   0
+    // )
+    // .from(
+    //   [".twitter-container"],
+    //   { duration: 1, opacity: "0", x: "+80px", ease: "power2.inOut" },
+    //   0
+    // )
+    .from(".mask", { width: 0, duration: 1, ease: "power2.inOut" }, 0);
+    // .from(
+    //   ".doubles .info",
+    //   { opacity: 0, duration: 0.5, ease: "power2.inOut" },
+    //   0.8
+    // );
+    // .from(
+    //   [".info"],
+    //   { width: 0, duration: 1, ease: "power2.inOut" }, 0
+    // );
 
   Start = async () => {
     startingAnimation.restart();
