@@ -144,26 +144,25 @@ body.omg {
 
 .twitter-container {
   z-index: -1;
-  top: 20px;
-  left: 120px;
-  width: 238px;
-  height: 49px;
+  top: 28px;
   background-size: cover;
   background-repeat: no-repeat;
   position: absolute;
   color: var(--text-color);
-  /* background: var(--bg-color); */
-  background: blue;
-  clip-path: polygon(30px 0%, 100% 0%, calc(100% - 30px) 100%, 0% 100%);
+}
+
+.t1 > .twitter-container {
+  left: -615px;
+}
+.t2 > .twitter-container {
+  left: 582px;
 }
 
 .twitter {
   position: absolute;
-  left: 26px;
-  top: 22px;
-  width: 170px;
-  height: 20px;
-  font-size: 16px;
+  font-size: 20px;
+  transform: scaleX(0.8);
+  transform-origin: left;
   justify-content: center;
   align-items: center;
 }
@@ -174,8 +173,9 @@ body.omg {
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
   background-color: var(--text-color);
-  width: 18px;
+  width: calc(18px * 1.25);
   height: 18px;
+  transform: scaleX(1.25);  /* inverse of 0.8, see .twitter */
   margin-right: 6px;
   flex-shrink: 0;
 }
@@ -199,9 +199,8 @@ body.omg {
 
 /* .t1 .sponsor {
   color: var(--p1-sponsor-color);
-} */
-
-/* .t2 .sponsor {
+}
+.t2 .sponsor {
   color: var(--p2-sponsor-color);
 } */
 
@@ -219,28 +218,43 @@ body.omg {
 
 .flagcountry {
   position: absolute;
-  top: 8px;
-  left: -36px;
+  top: -11px;
   transform: translateX(-100%); /* align right */
 }
 
 .flagstate {
   position: absolute;
-  top: 40px;
-  left: -20px;
+  top: -41px;
   transform: translateX(-100%); /* align right */
+}
+
+.t1 .flagcountry {
+  /* left: -543px; */
+  right: 549px;
+}
+.t2 .flagcountry {
+  /* left: 654px; */
+  right: -648px;
+}
+.t1 .flagstate {
+  /* left: -540px; */
+  right: 545px;
+}
+.t2 .flagstate {
+  /* left: 657px; */
+  right: -652px
 }
 
 .flagcountry .text:not(.text_empty), .flagstate .text:not(.text_empty) {
   background-color: var(--bg-color);
-  background-color: lime;
+  color: white;
   border-radius: 6px;
   padding-left: 6px;
   box-sizing: border-box;
 }
 
 .flagname {
-  font-size: 18px;
+  font-size: 15px;
   padding-right: 6px;
 }
 
@@ -386,7 +400,6 @@ body.omg {
 .t1.material_container {
   left: 580px;
 }
-
 .t2.material_container {
   left: unset;
   right: 580px;
@@ -417,20 +430,17 @@ body.omg {
 .pronoun {
   position: absolute;
   box-sizing: border-box;
-  width: 90px;
-  top: -22px;
-  left: 258px;
-  font-size: 16px;
+  top: 28px;
+  font-size: 20px;
+  transform: scaleX(0.8);
+  transform-origin: right;
   text-transform: uppercase;
-  padding-left: 2px;
-  padding-right: 4px;
-  border-radius: 4px;
   color: var(--text-color);
 }
 
 .t1 .pronoun {
-  background-color: var(--p1-score-bg-color);
+  right: 611px;
 }
 .t2 .pronoun {
-  background-color: var(--p2-score-bg-color);
+  right: -586px;
 }
