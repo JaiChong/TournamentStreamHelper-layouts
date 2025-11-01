@@ -1,3 +1,5 @@
+// TODO: custom OBS additions https://github.com/joaorb64/TournamentStreamHelper/wiki/Layouts#using-obs-directly-or-integrating-with-your-existing-image-based-layout
+
 LoadEverything().then(() => {
   gsap.config({ nullTargetWarn: false, trialWarn: false });
 
