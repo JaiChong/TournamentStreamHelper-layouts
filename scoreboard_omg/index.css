@@ -59,16 +59,17 @@ body {
 }
 body.omg.pplus {
   background-image:
-    url("./p+_background.png"),
+    url("./p+_background.png");
+    /* url("./p+_background.png"), */
     /* url("./test_imgs/p+_css.png"), */
     /* url("./test_imgs/p+_sss.png"), */
-    url("./test_imgs/p+_match.png"),
-    url("./test_imgs/p+_rss1.png"),
-    url("./test_imgs/p+_rss2.png"),
-    url("./test_imgs/p+_rss3.png"),
-    url("./test_imgs/p+_rss4.png"),
-    url("./test_imgs/p+_rss5.png"),
-    url("./test_imgs/p+_playercams.png");
+    /* url("./test_imgs/p+_match.png"), */
+    /* url("./test_imgs/p+_rss1.png"), */
+    /* url("./test_imgs/p+_rss2.png"), */
+    /* url("./test_imgs/p+_rss3.png"), */
+    /* url("./test_imgs/p+_rss4.png"), */
+    /* url("./test_imgs/p+_rss5.png"), */
+    /* url("./test_imgs/p+_playercams.png"); */
 }
 
 .omg .text {
