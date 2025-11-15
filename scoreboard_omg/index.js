@@ -36,13 +36,13 @@ LoadEverything().then(() => {
   
   gsap.config({ nullTargetWarn: false, trialWarn: false });
 
-  let carouselAnimation = gsap.timeline({ repeat: -1 });
-  let features = document.querySelectorAll(".carousel > div");
+  let carouselTextAnimation = gsap.timeline({ repeat: -1 });
+  let features = document.querySelectorAll(".carousel_text > div");
   gsap.set(features, { autoAlpha: 0 });
   for (let i = 0; i < features.length; i++) {
-    carouselAnimation
+    carouselTextAnimation
       .to(features[i], { autoAlpha:1, duration:0.5          })
-      .to(features[i], { autoAlpha:0, duration:0.5, delay:7 });
+      .to(features[i], { autoAlpha:0, duration:0.5, delay:4 });
   }
 
   let startingAnimation = gsap
@@ -124,7 +124,7 @@ LoadEverything().then(() => {
 
   Start = async () => {
     startingAnimation.restart();
-    carouselAnimation.restart();
+    carouselTextAnimation.restart();
   };
 
 
