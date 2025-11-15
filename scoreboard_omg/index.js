@@ -48,6 +48,15 @@ LoadEverything().then(() => {
   let startingAnimation = gsap
     .timeline({ paused: true })
     .from(
+      [".fade"],
+      {
+        duration: 4,
+        autoAlpha: 0,
+        ease: "power2.out",
+      },
+      0
+    )
+    .from(
       [".fade_down_left_stagger:not(.text_empty)"],
       {
         autoAlpha: 0,

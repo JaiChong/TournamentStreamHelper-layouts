@@ -60,17 +60,17 @@ body {
 }
 body.omg.pplus {
   background-image:
-    /* url("./p+_background.png"); */
-    url("./p+_background.png"),
+    url("./p+_background.png");
+    /* url("./p+_background.png"), */
     /* url("./test_imgs/p+_css.png"), */
     /* url("./test_imgs/p+_sss.png"), */
-    url("./test_imgs/p+_match.png"),
+    /* url("./test_imgs/p+_match.png"), */
     /* url("./test_imgs/p+_rss1.png"), */
     /* url("./test_imgs/p+_rss2.png"), */
     /* url("./test_imgs/p+_rss3.png"), */
     /* url("./test_imgs/p+_rss4.png"), */
     /* url("./test_imgs/p+_rss5.png"), */
-    url("./test_imgs/p+_playercams.png");
+    /* url("./test_imgs/p+_playercams.png"); */
 }
 body.omg.hdr {
   background-image:
@@ -79,13 +79,13 @@ body.omg.hdr {
   /* url("./test_imgs/hdr_sss2.png"), */
   /* url("./test_imgs/hdr_match_load.png"), */
   /* url("./test_imgs/hdr_match_start.png"), */
-  /* url("./test_imgs/hdr_match_magnet.png"), */
-  url("./test_imgs/hdr_match_kill.png"),
-  url("./test_imgs/hdr_match_respawn.png"),
+  /* url("./test_imgs/hdr_match_magnet.png"), TODO: potentially match the heights of .carousels._outer and the HDR in-game timer */
+  /* url("./test_imgs/hdr_match_kill.png"), */
+  /* url("./test_imgs/hdr_match_respawn.png"), */
   /* url("./test_imgs/hdr_match_doubles.png"), */
-  url("./test_imgs/hdr_rss1.png"),
-  url("./test_imgs/hdr_rss2.png"),
-  url("./test_imgs/hdr_rss3.png"),
+  /* url("./test_imgs/hdr_rss1.png"), */
+  /* url("./test_imgs/hdr_rss2.png"), */
+  /* url("./test_imgs/hdr_rss3.png"), */
   url("./test_imgs/hdr_rss4.png"),
   url("./test_imgs/hdr_rss5.png"),
   url("./test_imgs/hdr_load.png");
@@ -214,13 +214,18 @@ body.omg.hdr {
 
 /* Low-level: <main>-specific Articles */
 
-.event_orgs {
+footer {
   position: absolute;
   bottom: 0;
   justify-self: center;
+}
+.omg.pplus footer {
   margin-bottom: 4px;
   width: 162px;
   height: 196px;
+}
+.omg.hdr footer {
+  margin-bottom: 8px;
 }
 
 .logo {
@@ -678,14 +683,28 @@ body.omg.hdr {
   height: 100%;
 }
 
-.stream_chat {
+.omg.pplus .stream_chat {
   height: 284px;
+}
+.omg.hdr .stream_chat {
+  background: rgba(0,0,0,0.8);
+  border: 2px solid rgba(255,255,255,0.8);
+  margin-bottom: 16px;
+  border-radius: calc(var(--border-radius) / 2);
+  height: 194px;
+  width: 194px;
+}
+.omg.hdr .stream_chat iframe {
+  opacity: 0.1;
 }
 
 .player_cam._outer {
   align-self: end;
   margin-bottom: 6px;
   height: 456px;
+}
+.omg.hdr .player_cam._outer {
+  background: rgba(0,0,0,0.8);
 }
 .player_cam._inner {
   padding: 2px;
@@ -698,7 +717,7 @@ body.omg.hdr {
 }
 
 .omg.hdr .player_cam._outer {
-  border: 2px solid rgb(255,255,255,0.8);
+  border: 2px solid rgba(255,255,255,0.8);
   border-radius: calc(var(--border-radius) / 2);
   height: calc(16px + 162px + 16px);  /* distance to battle portrait (BP) bottom + BP height + distance */
   width: calc(194px * 16 / 9);
