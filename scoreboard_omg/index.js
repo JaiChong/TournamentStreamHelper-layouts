@@ -8,27 +8,23 @@ LoadEverything().then(() => {
   // 1. globals
 
   const dataEvents = [
-    { day:"sat", time:"11", name:"P+ Doubles:",     stream:"twitch" },
-    { day:"sat", time:"11", name:"HDR Doubles:",    stream:"twitch" },
-    { day:"sat", time:"13", name:"P+ Wave A:",      stream:"twitch" },
-    { day:"sat", time:"13", name:"HDR Wave A:",     stream:"twitch" },
-    { day:"sat", time:"15", name:"P+ Wave B:",      stream:"twitch" },
-    { day:"sat", time:"15", name:"HDR Wave B:",     stream:"twitch" },
+    { day:"sat", time:"11", name:"P+ Doubles:",       stream:"twitch" },
+    { day:"sat", time:"11", name:"HDR Doubles:",      stream:"twitch" },
+    { day:"sat", time:"13", name:"P+ Wave A:",        stream:"twitch" },
+    { day:"sat", time:"13", name:"HDR Wave A:",       stream:"twitch" },
+    { day:"sat", time:"15", name:"P+ Wave B:",        stream:"twitch" },
+    { day:"sat", time:"15", name:"HDR Wave B:",       stream:"twitch" },
 
-    { day:"sat", time:"17", name:"P+ Bronze:",      stream:"twitch" },
-    { day:"sat", time:"17", name:"HDR Bronze:",     stream:"twitch" },
-    { day:"sat", time:"17", name:"P+ Silver:",      stream:"twitch" },
-    { day:"sat", time:"17", name:"HDR Silver:",     stream:"twitch" },
-    { day:"sat", time:"17", name:"P+ Gold:",        stream:"twitch" },
-    { day:"sat", time:"17", name:"HDR Gold:",       stream:"twitch" },
+    { day:"sat", time:"17", name:"P+ Gold Bracket:",  stream:"twitch" },
+    { day:"sat", time:"17", name:"HDR Gold Bracket:", stream:"twitch" },
     
-    { day:"sat", time:"20", name:"Special Event:",  stream:"twitch" },
+    { day:"sat", time:"20", name:"Special Event:",    stream:"twitch" },
     
-    { day:"sun", time:"11", name:"Melee:",          stream:"twitch" },
-    { day:"sun", time:"11", name:"Rivals 2:",       stream:"twitch" },
-    { day:"sun", time:"11", name:"Ultimate:",       stream:"twitch" },
-    { day:"sun", time:"14", name:"P+ Top 8:",       stream:"twitch" },
-    { day:"sun", time:"17", name:"HDR Top 8:",      stream:"twitch" },
+    { day:"sun", time:"11", name:"Melee:",            stream:"twitch" },
+    { day:"sun", time:"11", name:"Rivals 2:",         stream:"twitch" },
+    { day:"sun", time:"11", name:"Ultimate:",         stream:"twitch" },
+    { day:"sun", time:"14", name:"P+ Top 8:",         stream:"twitch" },
+    { day:"sun", time:"17", name:"HDR Top 8:",        stream:"twitch" },
   ];
 
 
@@ -306,9 +302,28 @@ LoadEverything().then(() => {
           playerNames != teamName ? playerNamesSponsored : ""
         );
 
-        SetInnerHtml($(`.p${t + 1} .seed`), 
-          player.seed ? `Seed ${player[1].seed}` : ""
+        SetInnerHtml(
+          $(`.p${t + 1} .pronoun`),
+          ""
         );
+
+        SetInnerHtml($(`.p${t + 1} .seed`), 
+          team.player[1].seed ? `Seed ${team.player[1].seed}` : ""
+        );
+
+        if (data.score[window.scoreboardNumber].first_to) {
+          for (let i = 0; i < points[t].children.length; i++) {
+            i < data.score[window.scoreboardNumber].first_to
+            ? points[t].children[i].style.display = "block"
+            : points[t].children[i].style.display = "none";
+          }
+        }
+
+        for (let i = 0; i < data.score[window.scoreboardNumber].first_to; i++) {
+          i < team.score
+          ? points[t].children[i].classList.add("active")
+          : points[t].children[i].classList.remove("active");
+        }
 
         if(team.color) {
           document.querySelector(':root').style.setProperty(`--p${t + 1}-score-bg-color`, team.color);
