@@ -666,13 +666,21 @@ footer {
 }
 
 .omg .icon,
-.omg .carousels .twitter_logo {
+.carousel_text .twitter_logo {
   display: block;
   margin-top: 1.5px;
   margin-right: 4px;
+  white-space: nowrap;
+}
+.omg.hdr .icon,
+.omg.hdr .carousel_text .twitter_logo {
   width: 12px;
   height: 12px;
-  white-space: nowrap;
+}
+.omg.pplus .icon,
+.omg.pplus .carousel_text .twitter_logo {
+  width: 16px;
+  height: 16px;
 }
 .icon._discord {
   -webkit-mask-image: url(./discord.svg);
