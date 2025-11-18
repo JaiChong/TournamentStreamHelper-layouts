@@ -7,6 +7,8 @@ LoadEverything().then(() => {
   
   // 1. globals
 
+  // TODO: write table to inner HTML
+  // TODO: API key
   const dataEvents = [
     { day:"sat", time:"11", name:"P+ Doubles:",       stream:"twitch" },
     { day:"sat", time:"11", name:"HDR Doubles:",      stream:"twitch" },
@@ -32,6 +34,19 @@ LoadEverything().then(() => {
   
   gsap.config({ nullTargetWarn: false, trialWarn: false });
 
+  let carouselLogoAnimation = gsap.timeline({ repeat: -1 });
+  let logos = document.querySelectorAll(".carousel_logo > div");
+  gsap.set(logos, { autoAlpha: 0 });
+  carouselLogoAnimation
+    .to(logos[0], { autoAlpha:1, duration:0.5           })
+    .to(logos[0], { autoAlpha:0, duration:0.5, delay:44 })
+    .to(logos[1], { autoAlpha:1, duration:0.5           })
+    .to(logos[1], { autoAlpha:0, duration:0.5, delay:4  })
+    .to(logos[2], { autoAlpha:1, duration:0.5           })
+    .to(logos[2], { autoAlpha:0, duration:0.5, delay:4  })
+    .to(logos[3], { autoAlpha:1, duration:0.5           })
+    .to(logos[3], { autoAlpha:0, duration:0.5, delay:4  });
+  
   let carouselTextAnimation = gsap.timeline({ repeat: -1 });
   let features = document.querySelectorAll(".carousel_text > div");
   gsap.set(features, { autoAlpha: 0 });
@@ -129,6 +144,7 @@ LoadEverything().then(() => {
 
   Start = async () => {
     startingAnimation.restart();
+    carouselLogoAnimation.restart();
     carouselTextAnimation.restart();
   };
 
@@ -205,7 +221,8 @@ LoadEverything().then(() => {
                 ? `<div style="background-image: url('${player.online_avatar}')"></div>`
                 : ""
             );
-
+            
+            // TODO: repeat this for other carousel socials?
             SetInnerHtml(
               $(`.p${t + 1} .twitter`),
               player.twitter

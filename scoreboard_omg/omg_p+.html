@@ -10,7 +10,8 @@
 
     <main class="game_overlay _outer">
       <div class="game_overlay _inner">
-        
+
+        <!-- TODO: add UGA and PNW logos, OR remove for dubs space (?) -->
         <footer class="event_orgs">
           <div class="logo _org _bsc fade"></div>
         </footer>
@@ -78,7 +79,7 @@
         <div class="logo _event"></div>
         
         <div class="carousel_text">
-          <div class="bracket">
+          <!-- <div class="bracket">
             <h1>Bracket:</h1>
             start.gg/onelastgame
           </div>
@@ -106,33 +107,35 @@
           <div class="events_tomorrow">
             <h1>Tomorrow:</h1>
             <table></table>
-          </div>
+          </div> -->
 
-          <!-- HACK: missing social media SVGs -->
-          <div class="socials_pnw">
+          <!-- TODO: add social media SVGs -->
+          <!-- TODO: add logos as part of flex row with social links (?) -->
+          <div class="org _pnw">
             <h1>PNW Project M:</h1>
             <div>
-              <div class="_discord">discord.gg/JydA3GsK2u</div>
-              <div class="_twitter">@PNW_ProjectM</div>
-              <div class="_youtube">@PacificNorthwestProjectM</div>
+              <span class="icon _discord"></span>discord.gg/JydA3GsK2u
+              <span class="twitter_logo"></span>PNW_ProjectM
+              <span class="icon _youtube"></span>PacificNorthwestProjectM
             </div>
           </div>
 
-          <div class="socials_uga">
-            <h1>(UGA?):</h1>
+          <!-- TODO -->
+          <div class="org _uga">
+            <h1>UGA?:</h1>
             <div>
-              <div class="_discord">discord.gg/...</div>
-              <div class="_twitter">@...</div>
-              <div class="_youtube">@...</div>
+              <span class="icon _discord"></span>...
+              <span class="twitter_logo"></span>...
+              <span class="icon _youtube"></span>...
             </div>
           </div>
 
-          <div class="socials_bsc">
+          <div class="org _bsc">
             <h1>Bothell Smash Club:</h1>
             <div>
-              <div class="_discord">discord.gg/cz3NPn4</div>
-              <div class="_twitter">@UWBothellSmash</div>
-              <div class="_youtube">@UWBothellSmashClub</div>
+              <span class="icon _discord"></span>discord.gg/cz3NPn4
+              <span class="twitter_logo"></span>UWBothellSmash
+              <span class="icon _youtube"></span>UWBothellSmashClub
             </div>
           </div>
 
@@ -168,6 +171,7 @@
           </div>
         </div>
         
+        <!-- TODO: API key -->
         <div class="stream_chat">
           <iframe
             src="https://www.twitch.tv/embed/uwbothellsmashclub/chat?parent=YOUR_DOMAIN.com"
