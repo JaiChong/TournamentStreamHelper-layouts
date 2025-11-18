@@ -34,18 +34,27 @@ LoadEverything().then(() => {
   
   gsap.config({ nullTargetWarn: false, trialWarn: false });
 
-  let carouselLogoAnimation = gsap.timeline({ repeat: -1 });
-  let logos = document.querySelectorAll(".carousel_logo > div");
-  gsap.set(logos, { autoAlpha: 0 });
-  carouselLogoAnimation
-    .to(logos[0], { autoAlpha:1, duration:0.5           })
-    .to(logos[0], { autoAlpha:0, duration:0.5, delay:44 })
-    .to(logos[1], { autoAlpha:1, duration:0.5           })
-    .to(logos[1], { autoAlpha:0, duration:0.5, delay:4  })
-    .to(logos[2], { autoAlpha:1, duration:0.5           })
-    .to(logos[2], { autoAlpha:0, duration:0.5, delay:4  })
-    .to(logos[3], { autoAlpha:1, duration:0.5           })
-    .to(logos[3], { autoAlpha:0, duration:0.5, delay:4  });
+  let carouselLogoAnimationHDR = gsap.timeline({ repeat: -1 });
+  let logosHDR = document.querySelectorAll(".omg.hdr .carousel_logo > div");
+  gsap.set(logosHDR, { autoAlpha: 0 });
+  carouselLogoAnimationHDR
+    .to(logosHDR[0], { autoAlpha:1, duration:0.5           })
+    .to(logosHDR[0], { autoAlpha:0, duration:0.5, delay:44 })
+    .to(logosHDR[1], { autoAlpha:1, duration:0.5           })
+    .to(logosHDR[1], { autoAlpha:0, duration:0.5, delay:4  })
+    .to(logosHDR[2], { autoAlpha:1, duration:0.5           })
+    .to(logosHDR[2], { autoAlpha:0, duration:0.5, delay:4  })
+    .to(logosHDR[3], { autoAlpha:1, duration:0.5           })
+    .to(logosHDR[3], { autoAlpha:0, duration:0.5, delay:4  });
+
+  let carouselLogoAnimationPPlus = gsap.timeline({ repeat: -1 });
+  let logosPPlus = document.querySelectorAll(".omg.pplus .carousel_logo > div");
+  gsap.set(logosPPlus, { autoAlpha: 0 });
+  for (let i = 0; i < logosPPlus.length; i++) {
+    carouselLogoAnimationPPlus
+      .to(logosPPlus[i], { autoAlpha:1, duration:0.5           })
+      .to(logosPPlus[i], { autoAlpha:0, duration:0.5, delay:19 });
+  }
   
   let carouselTextAnimation = gsap.timeline({ repeat: -1 });
   let features = document.querySelectorAll(".carousel_text > div");
@@ -144,7 +153,8 @@ LoadEverything().then(() => {
 
   Start = async () => {
     startingAnimation.restart();
-    carouselLogoAnimation.restart();
+    carouselLogoAnimationPPlus.restart();
+    carouselLogoAnimationHDR.restart();
     carouselTextAnimation.restart();
   };
 

@@ -213,18 +213,18 @@ footer {
 .omg .logo {
   border-radius: unset;
 }
-.omg.pplus .logo._org {
-  position: absolute;
-  justify-self: center;
-  align-self: center;
-  inset: 0;
-  width: 100px;
-  height: 100px;
-  transform: unset;
-}
 .omg.hdr .logo {
   width: 50px;
   height: 50px;
+}
+.omg.pplus .logo:not(._event):not(._game) {
+  position: absolute;
+  inset: 0;
+  width: 110px;
+  height: 110px;
+  justify-self: center;
+  align-self: center;
+  transform: unset;
 }
 .logo._bsc {
   background-image: url("org_bsc.png");
@@ -595,9 +595,18 @@ footer {
   width: auto;
 } */
 
-.carousel_logo {
-  height: 100%;
+
+.omg.hdr .carousel_logo {
   width: 50px;
+  height: 50px;
+}
+.omg.pplus .carousel_logo {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  justify-self: center;
+  align-self: center;
+  top: 30px;
 }
 
 .carousel_text {
