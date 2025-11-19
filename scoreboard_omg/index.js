@@ -7,28 +7,26 @@ LoadEverything().then(() => {
   
   // 1. globals
 
+  // TODO: write table to inner HTML
+  // TODO: API key
   const dataEvents = [
-    { day:"sat", time:"11", name:"P+ Doubles:",     stream:"twitch" },
-    { day:"sat", time:"11", name:"HDR Doubles:",    stream:"twitch" },
-    { day:"sat", time:"13", name:"P+ Wave A:",      stream:"twitch" },
-    { day:"sat", time:"13", name:"HDR Wave A:",     stream:"twitch" },
-    { day:"sat", time:"15", name:"P+ Wave B:",      stream:"twitch" },
-    { day:"sat", time:"15", name:"HDR Wave B:",     stream:"twitch" },
+    { day:"sat", time:"11", name:"P+ Doubles:",       stream:"twitch" },
+    { day:"sat", time:"11", name:"HDR Doubles:",      stream:"twitch" },
+    { day:"sat", time:"13", name:"P+ Wave A:",        stream:"twitch" },
+    { day:"sat", time:"13", name:"HDR Wave A:",       stream:"twitch" },
+    { day:"sat", time:"15", name:"P+ Wave B:",        stream:"twitch" },
+    { day:"sat", time:"15", name:"HDR Wave B:",       stream:"twitch" },
 
-    { day:"sat", time:"17", name:"P+ Bronze:",      stream:"twitch" },
-    { day:"sat", time:"17", name:"HDR Bronze:",     stream:"twitch" },
-    { day:"sat", time:"17", name:"P+ Silver:",      stream:"twitch" },
-    { day:"sat", time:"17", name:"HDR Silver:",     stream:"twitch" },
-    { day:"sat", time:"17", name:"P+ Gold:",        stream:"twitch" },
-    { day:"sat", time:"17", name:"HDR Gold:",       stream:"twitch" },
+    { day:"sat", time:"17", name:"P+ Gold Bracket:",  stream:"twitch" },
+    { day:"sat", time:"17", name:"HDR Gold Bracket:", stream:"twitch" },
     
-    { day:"sat", time:"20", name:"Special Event:",  stream:"twitch" },
+    { day:"sat", time:"20", name:"Special Event:",    stream:"twitch" },
     
-    { day:"sun", time:"11", name:"Melee:",          stream:"twitch" },
-    { day:"sun", time:"11", name:"Rivals 2:",       stream:"twitch" },
-    { day:"sun", time:"11", name:"Ultimate:",       stream:"twitch" },
-    { day:"sun", time:"14", name:"P+ Top 8:",       stream:"twitch" },
-    { day:"sun", time:"17", name:"HDR Top 8:",      stream:"twitch" },
+    { day:"sun", time:"11", name:"Melee:",            stream:"twitch" },
+    { day:"sun", time:"11", name:"Rivals 2:",         stream:"twitch" },
+    { day:"sun", time:"11", name:"Ultimate:",         stream:"twitch" },
+    { day:"sun", time:"14", name:"P+ Top 8:",         stream:"twitch" },
+    { day:"sun", time:"17", name:"HDR Top 8:",        stream:"twitch" },
   ];
 
 
@@ -36,17 +34,48 @@ LoadEverything().then(() => {
   
   gsap.config({ nullTargetWarn: false, trialWarn: false });
 
-  let carouselAnimation = gsap.timeline({ repeat: -1 });
-  let features = document.querySelectorAll(".carousel > div");
+  let carouselLogoAnimationHDR = gsap.timeline({ repeat: -1 });
+  let logosHDR = document.querySelectorAll(".omg.hdr .carousel_logo > div");
+  gsap.set(logosHDR, { autoAlpha: 0 });
+  carouselLogoAnimationHDR
+    .to(logosHDR[0], { autoAlpha:1, duration:0.5           })
+    .to(logosHDR[0], { autoAlpha:0, duration:0.5, delay:44 })
+    .to(logosHDR[1], { autoAlpha:1, duration:0.5           })
+    .to(logosHDR[1], { autoAlpha:0, duration:0.5, delay:4  })
+    .to(logosHDR[2], { autoAlpha:1, duration:0.5           })
+    .to(logosHDR[2], { autoAlpha:0, duration:0.5, delay:4  })
+    .to(logosHDR[3], { autoAlpha:1, duration:0.5           })
+    .to(logosHDR[3], { autoAlpha:0, duration:0.5, delay:4  });
+
+  let carouselLogoAnimationPPlus = gsap.timeline({ repeat: -1 });
+  let logosPPlus = document.querySelectorAll(".omg.pplus .carousel_logo > div");
+  gsap.set(logosPPlus, { autoAlpha: 0 });
+  for (let i = 0; i < logosPPlus.length; i++) {
+    carouselLogoAnimationPPlus
+      .to(logosPPlus[i], { autoAlpha:1, duration:0.5           })
+      .to(logosPPlus[i], { autoAlpha:0, duration:0.5, delay:19 });
+  }
+  
+  let carouselTextAnimation = gsap.timeline({ repeat: -1 });
+  let features = document.querySelectorAll(".carousel_text > div");
   gsap.set(features, { autoAlpha: 0 });
   for (let i = 0; i < features.length; i++) {
-    carouselAnimation
+    carouselTextAnimation
       .to(features[i], { autoAlpha:1, duration:0.5          })
-      .to(features[i], { autoAlpha:0, duration:0.5, delay:7 });
+      .to(features[i], { autoAlpha:0, duration:0.5, delay:4 });
   }
 
   let startingAnimation = gsap
     .timeline({ paused: true })
+    .from(
+      [".fade"],
+      {
+        duration: 4,
+        autoAlpha: 0,
+        ease: "power2.out",
+      },
+      0
+    )
     .from(
       [".fade_down_left_stagger:not(.text_empty)"],
       {
@@ -124,7 +153,9 @@ LoadEverything().then(() => {
 
   Start = async () => {
     startingAnimation.restart();
-    carouselAnimation.restart();
+    carouselLogoAnimationPPlus.restart();
+    carouselLogoAnimationHDR.restart();
+    carouselTextAnimation.restart();
   };
 
 
@@ -200,7 +231,8 @@ LoadEverything().then(() => {
                 ? `<div style="background-image: url('${player.online_avatar}')"></div>`
                 : ""
             );
-
+            
+            // TODO: repeat this for other carousel socials?
             SetInnerHtml(
               $(`.p${t + 1} .twitter`),
               player.twitter
@@ -297,9 +329,28 @@ LoadEverything().then(() => {
           playerNames != teamName ? playerNamesSponsored : ""
         );
 
-        SetInnerHtml($(`.p${t + 1} .seed`), 
-          player.seed ? `Seed ${player[1].seed}` : ""
+        SetInnerHtml(
+          $(`.p${t + 1} .pronoun`),
+          ""
         );
+
+        SetInnerHtml($(`.p${t + 1} .seed`), 
+          team.player[1].seed ? `Seed ${team.player[1].seed}` : ""
+        );
+
+        if (data.score[window.scoreboardNumber].first_to) {
+          for (let i = 0; i < points[t].children.length; i++) {
+            i < data.score[window.scoreboardNumber].first_to
+            ? points[t].children[i].style.display = "block"
+            : points[t].children[i].style.display = "none";
+          }
+        }
+
+        for (let i = 0; i < data.score[window.scoreboardNumber].first_to; i++) {
+          i < team.score
+          ? points[t].children[i].classList.add("active")
+          : points[t].children[i].classList.remove("active");
+        }
 
         if(team.color) {
           document.querySelector(':root').style.setProperty(`--p${t + 1}-score-bg-color`, team.color);

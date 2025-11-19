@@ -23,6 +23,7 @@
 .dev2 {background:#e848 !important; z-index:99999;}
 .dev1 {background:#dc66 !important; z-index:99999;}
 .dev0 {background:#9de6 !important; z-index:99999;} */
+.devh {display:none !important;}
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -57,6 +58,13 @@ body {
   /* background-size: cover; */
   background-repeat: no-repeat;
 }
+.omg .text {
+  letter-spacing: 0;
+}
+.omg *.text_empty {
+  display: none;
+}
+
 body.omg.pplus {
   background-image:
     url("./p+_background.png");
@@ -71,12 +79,23 @@ body.omg.pplus {
     /* url("./test_imgs/p+_rss5.png"), */
     /* url("./test_imgs/p+_playercams.png"); */
 }
-
-.omg .text {
-  letter-spacing: 0;
-}
-.omg *.text_empty {
-  display: none;
+body.omg.hdr {
+  background-image:
+  /* url("./test_imgs/hdr_css.png"), */
+  /* url("./test_imgs/hdr_sss1.png"), */
+  /* url("./test_imgs/hdr_sss2.png"), */
+  /* url("./test_imgs/hdr_match_load.png"), */
+  /* url("./test_imgs/hdr_match_start.png"), */
+  url("./test_imgs/hdr_match_magnet.png"),
+  url("./test_imgs/hdr_match_kill.png"),
+  url("./test_imgs/hdr_match_respawn.png"),
+  url("./test_imgs/hdr_match_doubles.png"),
+  url("./test_imgs/hdr_rss1.png"),
+  url("./test_imgs/hdr_rss2.png"),
+  url("./test_imgs/hdr_rss3.png"),
+  url("./test_imgs/hdr_rss4.png"),
+  url("./test_imgs/hdr_rss5.png"),
+  url("./test_imgs/hdr_load.png");
 }
 
 
@@ -84,41 +103,60 @@ body.omg.pplus {
 
 .game_overlay._outer {
   height: 1080px;
-  justify-self: center;
 }
-.pplus .game_overlay._outer {
-  width: calc(1368px - 4px);  /* 2px borders */
-}
-.pplus .game_overlay._inner {
+.game_overlay._inner {
   padding: 8px;
   width: calc(100% - 16px);
   height: calc(100% - 16px);
 }
+.omg.pplus .game_overlay._outer {
+  width: calc(1368px - 4px);  /* overlapping 2px side panel borders */
+  justify-self: center;
+}
+.omg.hdr .game_overlay._outer {
+  width: 1920px;
+}
 
-.panel._outer {
+.omg.pplus .panel._outer {
   width: calc((1920px - 1368px) / 2);
   height: 1080px;
 }
+.omg.hdr .panel._outer {
+  position: absolute;
+  width: calc(377px - 8px);
+  height: calc(1080px - 16px - 378px - 8px);  /* HACK */
+  bottom: 8px;  /* HACK */
+}
 .panel._outer._left {
   justify-self: left;
+  align-content: start;
 }
 .panel._outer._right {
   justify-self: right;
 }
 
 .panel._inner {
-  display: grid;
   padding: 8px;
+}
+.omg.pplus .panel._inner {
+  display: grid;
   width: calc((1920px - 1368px) / 2 - 16px);
   height: calc(1080px - 16px);
   align-items: start;
   justify-items: space-between;
 }
-.panel._inner._left {
+.omg.pplus .panel._inner._left {
   grid-template-rows: auto 1fr auto auto;
 }
-.panel._inner._right {
+.omg.pplus .panel._inner._right {
   grid-template-rows: auto auto 1fr auto auto;
+}
+.omg.hdr .panel._inner {
+  display: flex;
+  padding:0;
+  width: 100%;
+  height:100%;
+  flex-direction:column-reverse;
 }
 
 
@@ -137,56 +175,93 @@ body.omg.pplus {
 .omg .container {
   position: static;
   border-radius: unset;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.8);
   /* color: white; */
 }
 
 
 /* Low-level: <main>-specific Articles */
 
-.event_orgs {
+footer {
   position: absolute;
   bottom: 0;
   justify-self: center;
+}
+.omg.pplus footer {
   margin-bottom: 4px;
   width: 162px;
   height: 196px;
 }
+.omg.hdr footer {
+  margin-bottom: 8px;
+}
 
 .logo {
-  position: absolute;
+  /* position: absolute; */
   /* top: 24px; */
   /* left: 50%; */
   /* transform: translateX(-50%); */
-  width: 100px;
-  height: 100px;
+  /* width: 100px; */
+  /* height: 100px; */
   /* background-image: url("../logo.png"); */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  border-radius: var(--border-radius);
+  /* border-radius: var(--border-radius); */
   z-index: 9;
 }
 .omg .logo {
-  background-image: url("org_bsc.png");
+  border-radius: unset;
+}
+.omg.hdr .logo {
+  width: 50px;
+  height: 50px;
+}
+.omg.pplus .logo:not(._event):not(._game) {
+  position: absolute;
+  inset: 0;
+  width: 110px;
+  height: 110px;
   justify-self: center;
   align-self: center;
-  inset: 0;
-  /* width: 80px;
-  height: 80px; */
-  /* width: 100px;
-  height: 100px; */
-  /* width: 120px;
-  height: 120px; */
   transform: unset;
+}
+.logo._bsc {
+  background-image: url("org_bsc.png");
+  /* 2035x2022 */
+}
+.logo._uga {
+  /* TODO */
+}
+.omg.pplus .logo._pnw {
+  background-image: url("org_pnw_pm.png");
+}
+.omg.hdr .logo._pnw {
+  /* TODO */
+}
+
+.omg.hdr .logo._event {
+  background-image: url("event_omg.png");
+}
+.omg.hdr .logo._event_text {
+  background-image: url("event_omg_text.png");
+}
+.omg.hdr .logo._game {
+  background-image: url("game_hdr.png");
+}
+.omg.hdr .logo._game::after {
+  content: "v0.49.6-beta";
+  position: absolute;
+  color: rgb(112,112,112);
+  bottom: 0;
+  right: 2;
+  font-size: 9;
 }
 
 .scoreboard {
   display: flex;
   position: absolute;
   justify-self: center;
-  width: 100%;
-  height: 25%;
   justify-content: center;
   align-items: flex-start;
   gap: 4px;
@@ -252,7 +327,7 @@ body.omg.pplus {
 
 .points > div {
   width: 15px;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.8);
   border: 2px solid rgba(255,255,255,0.8);
 }
 .points > div::after {
@@ -464,49 +539,179 @@ body.omg.pplus {
 
 /* Low-level: <aside>-specific Articles */
 
-.panel._inner > * {
+.omg.pplus .panel._inner > * {
   width: 100%;
   align-self: center;
 }
-.panel._inner > *:first-child {
+.omg.pplus .panel._inner > *:first-child {
   margin-top: 12px;
 }
 
-.logo_event {
-  height: 300px;
+.corner_top._outer {
+  position: absolute;
 }
 
-.carousel {
+.corner_top._left._outer {
+  justify-self: left;
+  margin: 37px 25px 8px 32px; /* top & right match timer's top & left, down mirror parent's padding-top, left match blastzone preview box */
+  height: calc(122px - 16px - 37px);  /* blastzone preview box top - 8px parent padding-top - 8px balance - 37px margin-top */
+  width: calc(228px - 8px);   /* HACK: width to reach bo20 scoreboard - 8px padding */
+}
+.corner_top._left._inner {
+  width: calc(100%);
+  height: 100%;
+}
+.omg.hdr .corner_top.carousels._outer {
+  background: rgba(0,0,0,0.8);
+  border: 2px solid rgba(255,255,255,0.8);
+  border-radius: calc(var(--border-radius) / 2);
+}
+.omg.hdr .corner_top.carousels._inner {
   display: flex;
-  height: 242px;
+  padding: 8px;
+  width: calc(100% - 16px);
+  height: calc(100% - 16px);
+  flex-direction: row;
+  gap: 8px !important;
+}
+
+.omg.hdr .carousels._inner > div,
+.omg.pplus .carousel_text {
+  position: relative;
+  height: 100%;
+}
+.omg.hdr .carousels._inner > div > div,
+.omg.pplus .carousel_text > div {
+  position: absolute;
+}
+
+/* .corner_top._right._outer {
+  justify-self: right;
+  height: 378px;  aligned with blastzone preview box bottom
+}
+.corner_top._right._inner {
+  padding-right: 43px;
+  padding-left: 23px;
+  width: auto;
+} */
+
+
+.omg.hdr .carousel_logo {
+  width: 50px;
+  height: 50px;
+}
+.omg.pplus .carousel_logo {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  justify-self: center;
+  align-self: center;
+  top: 30px;
+}
+
+.carousel_text {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   align-items: center;
   color: white;
 }
-.carousel > div {
-  position: absolute;
-}
-.carousel h1 {
+.carousel_text h1 {
   margin-block-start: 0;
   margin-block-end: 0.33em;
   font-size: 28px;
 }
-
-/* .carousel table {
+.carousel_text > div {
+  display: flex;
+  width: fit-content;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+.carousel_text > div > div {
+  align-self: center;
+  text-align: left;
+}
+.omg.hdr .carousel_text {
+  width: calc(100% - 52px - 8px);
+  height: 100%;
+}
+.omg.hdr .carousel_text h1 {
+  font-size: 20px;
+  margin-block-end: 0;
+}
+.omg.hdr .carousel_text *:not(h1) {
+  font-size: 12px;
+}
+.omg.hdr .carousel_text > div:is(.logo) {
+  width: 100%;
+}
+/* .carousel_text table {
   color: white;
   border-spacing: 8px 0;
 }
-.carousel td:first-child {
+.carousel_text td:first-child {
   text-align: right;
 } */
 
-.carousel > div > div {
-  text-align: left;
+.omg.hdr .commentary > div,
+.org > div {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  /* gap: 4px; */
 }
 
-.commentary {
+.icon,
+.twitter_logo {
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  background: var(--text-color);
+  /* width: 18px; */
+  /* height: 18px; */
+  /* margin-right: 8px; */
+}
+
+.omg .icon,
+.carousel_text .twitter_logo {
+  display: block;
+  margin-top: 1.5px;
+  margin-right: 4px;
+  white-space: nowrap;
+}
+.omg.hdr .icon,
+.omg.hdr .carousel_text .twitter_logo {
+  width: 12px;
+  height: 12px;
+}
+.omg.pplus .icon,
+.omg.pplus .carousel_text .twitter_logo {
+  width: 16px;
+  height: 16px;
+}
+.icon._discord {
+  -webkit-mask-image: url(./discord.svg);
+}
+.icon._twitch {
+  -webkit-mask-image: url(./twitch.svg);
+}
+.twitter_logo {
+  -webkit-mask-image: url(./twitter.svg);
+}
+.icon._youtube {
+  -webkit-mask-image: url(./youtube.png);
+}
+
+.omg.pplus .logo._event {
+  height: 300px;
+}
+.omg.pplus .logo._game {
+  height: 61px;
+}
+
+.omg.pplus .commentary {
   display: flex;
   margin-top: 40px;
   height: 61px;
@@ -517,20 +722,31 @@ body.omg.pplus {
   height: 100%;
   margin: 0 10px;
 }
-.commentators {
+.omg.pplus .commentators {
   display: flex;
   width: calc(100% - 44px - 20px);
   height: 100%;
   flex-direction: column;
   gap: 4px;
 }
-.commentators * {
+.omg.pplus .commentators * {
   width: 100%;
   height: 100%;
 }
 
-.stream_chat {
+.omg.pplus .stream_chat {
   height: 284px;
+}
+.omg.hdr .stream_chat {
+  background: rgba(0,0,0,0.8);
+  border: 2px solid rgba(255,255,255,0.8);
+  margin-bottom: 16px;
+  border-radius: calc(var(--border-radius) / 2);
+  height: 194px;
+  width: 194px;
+}
+.omg.hdr .stream_chat iframe {
+  opacity: 0.1;
 }
 
 .player_cam._outer {
@@ -538,12 +754,27 @@ body.omg.pplus {
   margin-bottom: 6px;
   height: 456px;
 }
-.player_cam._inner {
+.omg.hdr .player_cam._outer {
+  background: rgba(0,0,0,0.8);
+  border: 2px solid rgba(255,255,255,0.8);
+  border-radius: calc(var(--border-radius) / 2);
+  height: calc(16px + 162px + 16px);  /* distance to battle portrait (BP) bottom + BP height + distance */
+  width: calc(194px * 16 / 9);
+  margin: 8px;
+}
+.omg.hdr .p1.player_cam._outer {
+  align-self:unset;
+  bottom: 0;
+  left: 0;
+}
+
+.omg.pplus .player_cam._inner {
   padding: 2px;
   width: calc(100% - 4px);
-  height: calc(456px - 4px);
+  height: calc(100% - 4px);
 }
-.player_cam._inner * {
+.omg.hdr .player_cam._inner,
+.omg.pplus .player_cam._inner * {
   width: 100%;
   height: 100%;
 }
@@ -558,15 +789,6 @@ body.omg.pplus {
   align-content: center;
   overflow: hidden;
 }
-/* .p1.chips {
-  left: 380px;
-} */
-/* .p2.chips {
-  flex-direction: row-reverse;
-  left: 1040px;
-  justify-content: left;
-} */
-
 .omg .chips {
   position: static;
   left: unset;
@@ -577,11 +799,32 @@ body.omg.pplus {
   justify-content: center;
   gap: 4px;
 }
-.p1.chips {
+.omg.hdr .chips {
+  position: absolute;
+  bottom: 14px;
+  max-width: 334px;
+  /* z-index:99999; */
+}
+
+/* .p1.chips {
+  left: 380px;
+} */
+/* .p2.chips {
+flex-direction: row-reverse;
+  left: 1040px;
+  justify-content: left;
+} */
+.omg .p1.chips {
   flex-direction: row-reverse;
 }
-.p2.chips {
+.omg .p2.chips {
   flex-direction: row;
+}
+.omg.hdr .p1.chips {
+  left: 14px;
+}
+.omg.hdr .p2.chips {
+  right: 14px;
 }
 
 .chip {
@@ -592,7 +835,7 @@ body.omg.pplus {
   border: 2px solid rgba(255,255,255,0.8);
   border-radius: unset;
   /* height: 24px; */
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.8);
   flex: 0 0 auto;
 }
 .omg .chip.twitter {
@@ -621,7 +864,7 @@ body.omg.pplus {
   /* padding-right: 12px; */
   /* background: var(--bg-color); */
   color: var(--text-color);
-  border-radius: calc(var(--border-radius) / 4);
+  /* border-radius: calc(var(--border-radius) / 4); */
   min-width: unset;
   /* padding-left: 8px; */
   /* padding-right: 8px; */
@@ -631,22 +874,7 @@ body.omg.pplus {
   font-size: 12px;
 }
 
-.twitter_logo {
-  -webkit-mask-image: url(./twitter.svg);
-  -webkit-mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  background: var(--text-color);
-  /* width: 18px; */
-  /* height: 18px; */
-  /* margin-right: 8px; */
-}
-.omg .twitter_logo {
-  margin-right: 4px;
-  width: 12px;
-  height: 12px;
-}
-
+/* most .twitter_logo styling moved to under .carousel */
 .chips .twitter_logo {
   /* margin-left: -4px; */
 }

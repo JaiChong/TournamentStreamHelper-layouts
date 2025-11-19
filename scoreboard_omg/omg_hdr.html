@@ -1,0 +1,203 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="../include/globals.js"></script>
+    <link rel="stylesheet" href="../main.css" />
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body class="omg hdr">
+    <main class="game_overlay _outer">
+      <div class="game_overlay _inner">
+        
+
+        <!-- TODO: API key -->
+        <footer class="stream_chat fade">
+          <iframe
+            src="https://www.twitch.tv/embed/uwbothellsmashclub/chat?parent=YOUR_DOMAIN.com"
+            height="190"
+            width="190">
+          </iframe>
+        </footer>
+
+
+        <header class="scoreboard">
+            
+          <div class="p1 player container fade_left">
+            <div class="flagcountry"></div>
+            <div class="flagstate"></div>
+            <div class="name"></div>
+            <div class="character_container"></div>
+          </div>
+    
+          <div class="p1 points">
+            <div class="fade_down_left_stagger"></div>
+            <div class="fade_down_left_stagger"></div>
+            <div class="fade_down_left_stagger"></div>
+            <div class="fade_down_left_stagger"></div>
+            <div class="fade_down_left_stagger"></div>
+            <div class="fade_down_left_stagger"></div>
+            <div class="fade_down_left_stagger"></div>
+            <div class="fade_down_left_stagger"></div>
+            <div class="fade_down_left_stagger"></div>
+            <div class="fade_down_left_stagger"></div>
+          </div>
+    
+          <div class="current_set container fade_down">
+            <!-- clip-path masks -> corner shifts calculated manually -->
+            <svg class="trapezoid_border_nofill" width="350" height="48">
+              <polygon points="0,0 350,0 332.529,48 17.471,48"></polygon>
+            </svg>
+            <div class="match"></div>
+            <div class="phase"></div>
+          </div>
+    
+          <div class="p2 points">
+            <div class="fade_down_right_stagger"></div>
+            <div class="fade_down_right_stagger"></div>
+            <div class="fade_down_right_stagger"></div>
+            <div class="fade_down_right_stagger"></div>
+            <div class="fade_down_right_stagger"></div>
+            <div class="fade_down_right_stagger"></div>
+            <div class="fade_down_right_stagger"></div>
+            <div class="fade_down_right_stagger"></div>
+            <div class="fade_down_right_stagger"></div>
+            <div class="fade_down_right_stagger"></div>
+          </div>
+  
+          <div class="p2 player container fade_right">
+            <div class="flagcountry"></div>
+            <div class="flagstate"></div>
+            <div class="name"></div>
+            <div class="character_container"></div>
+          </div>
+
+        </header>
+        
+        
+        <aside class="corner_top _left carousels _outer fade">
+          <div class="corner_top _left carousels _inner">
+
+            <!-- TODO: desynced animation cycle -->
+            <div class="carousel_logo">
+              <div class="logo _event"></div>
+              <div class="logo _pnw"></div>
+              <div class="logo _uga"></div>
+              <div class="logo _bsc"></div>
+            </div>
+
+            <div class="carousel_text">
+              
+              <div class="logo _game"></div>
+
+              <div class="logo _event_text"></div>
+
+              <div class="bracket">
+                <h1>Bracket:</h1>
+                start.gg/onelastgame
+              </div>
+              
+              <div class="location">
+                <h1>Location:</h1>
+                Seattle, WA
+              </div>
+    
+              <!-- TODO: stream links -->
+              <div class="events_curr">
+                <h1>Streaming Now:</h1>
+                <table></table>
+              </div>
+    
+              <div class="events_next">
+                <h1>Up Next:</h1>
+                <table></table>
+              </div>
+    
+              <div class="events_later">
+                <h1>Later Today:</h1>
+                <table></table>
+              </div>
+    
+              <div class="events_tomorrow">
+                <h1>Tomorrow:</h1>
+                <table></table>
+              </div>
+
+              <div class="commentary">
+                <h1>Commentary:</h1>
+                <div>
+                  <span class="twitter_logo"></span>Commentator1
+                  <span class="twitter_logo"></span>Commentator2
+                </div>
+              </div>
+    
+              <!-- TODO: add social media SVGs -->
+              <div class="org _pnw">
+                <div>
+                  <span class="icon _discord"></span>discord.gg/JydA3GsK2u
+                  <span class="twitter_logo"></span>PNW_ProjectM
+                  <span class="icon _youtube"></span>PacificNorthwestProjectM
+                </div>
+              </div>
+    
+              <!-- TODO -->
+              <div class="org _uga">
+                <div>
+                  <span class="icon _discord"></span>...
+                  <span class="twitter_logo"></span>...
+                  <span class="icon _youtube"></span>...
+                </div>
+              </div>
+    
+              <div class="org _bsc">
+                <div>
+                  <span class="icon _discord"></span>discord.gg/cz3NPn4
+                  <span class="twitter_logo"></span>UWBothellSmash
+                  <span class="icon _youtube"></span>UWBothellSmashClub
+                </div>
+              </div>
+            </div>  <!-- .carousels_text -->
+
+          </div>  <!-- .corner_top._left._inner.carousels -->
+        </aside>  <!-- .corner_top._left._outer.carousels -->
+
+        
+        <aside class="panel _left _outer">
+          <div class="panel _left _inner">
+    
+            <div class="p1 player_cam _outer dev0 fade">
+              <div class="p1 player_cam _inner">
+                <div class="p1 chips">
+                  <div class="seed chip"></div>
+                  <div class="twitter chip"></div>
+                  <div class="pronoun chip"></div>
+                </div>
+              </div>
+            </div>
+      
+          </div>
+        </aside>  <!-- .panel._left._outer --> 
+    
+    
+        <aside class="panel _right _outer">
+          <div class="panel _right _inner">
+
+            <div class="p2 player_cam _outer fade">
+              <div class="p2 player_cam _inner">
+                <div class="p2 chips">
+                  <div class="seed chip"></div>
+                  <div class="twitter chip"></div>
+                  <div class="pronoun chip"></div>
+                </div>
+              </div> 
+            </div>
+        
+          </div>
+        </aside>  <!-- .panel._right._outer -->
+
+
+      </div>
+    </main>  <!-- .game_overlay._outer -->
+    
+    <script src="index.js"></script>
+  </body>
+</html>
