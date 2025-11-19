@@ -9,25 +9,25 @@ LoadEverything().then(() => {
 
   // TODO: write table to inner HTML
   // TODO: API key
-  const dataEvents = [
-    { day:"sat", time:"11", name:"P+ Doubles:",       stream:"twitch" },
-    { day:"sat", time:"11", name:"HDR Doubles:",      stream:"twitch" },
-    { day:"sat", time:"13", name:"P+ Wave A:",        stream:"twitch" },
-    { day:"sat", time:"13", name:"HDR Wave A:",       stream:"twitch" },
-    { day:"sat", time:"15", name:"P+ Wave B:",        stream:"twitch" },
-    { day:"sat", time:"15", name:"HDR Wave B:",       stream:"twitch" },
+  // const dataEvents = [
+  //   { day:"sat", time:"11", name:"P+ Doubles:",       stream:"twitch" },
+  //   { day:"sat", time:"11", name:"HDR Doubles:",      stream:"twitch" },
+  //   { day:"sat", time:"13", name:"P+ Wave A:",        stream:"twitch" },
+  //   { day:"sat", time:"13", name:"HDR Wave A:",       stream:"twitch" },
+  //   { day:"sat", time:"15", name:"P+ Wave B:",        stream:"twitch" },
+  //   { day:"sat", time:"15", name:"HDR Wave B:",       stream:"twitch" },
 
-    { day:"sat", time:"17", name:"P+ Gold Bracket:",  stream:"twitch" },
-    { day:"sat", time:"17", name:"HDR Gold Bracket:", stream:"twitch" },
+  //   { day:"sat", time:"17", name:"P+ Gold Bracket:",  stream:"twitch" },
+  //   { day:"sat", time:"17", name:"HDR Gold Bracket:", stream:"twitch" },
     
-    { day:"sat", time:"20", name:"Special Event:",    stream:"twitch" },
+  //   { day:"sat", time:"20", name:"Special Event:",    stream:"twitch" },
     
-    { day:"sun", time:"11", name:"Melee:",            stream:"twitch" },
-    { day:"sun", time:"11", name:"Rivals 2:",         stream:"twitch" },
-    { day:"sun", time:"11", name:"Ultimate:",         stream:"twitch" },
-    { day:"sun", time:"14", name:"P+ Top 8:",         stream:"twitch" },
-    { day:"sun", time:"17", name:"HDR Top 8:",        stream:"twitch" },
-  ];
+  //   { day:"sun", time:"11", name:"Melee:",            stream:"twitch" },
+  //   { day:"sun", time:"11", name:"Rivals 2:",         stream:"twitch" },
+  //   { day:"sun", time:"11", name:"Ultimate:",         stream:"twitch" },
+  //   { day:"sun", time:"14", name:"P+ Top 8:",         stream:"twitch" },
+  //   { day:"sun", time:"17", name:"HDR Top 8:",        stream:"twitch" },
+  // ];
 
 
   // 2. Set, Run animations
@@ -39,13 +39,16 @@ LoadEverything().then(() => {
   gsap.set(logosHDR, { autoAlpha: 0 });
   carouselLogoAnimationHDR
     .to(logosHDR[0], { autoAlpha:1, duration:0.5           })
-    .to(logosHDR[0], { autoAlpha:0, duration:0.5, delay:44 })
+    // .to(logosHDR[0], { autoAlpha:0, duration:0.5, delay:44 })
+    .to(logosHDR[0], { autoAlpha:0, duration:0.5, delay:24 })
     .to(logosHDR[1], { autoAlpha:1, duration:0.5           })
     .to(logosHDR[1], { autoAlpha:0, duration:0.5, delay:4  })
     .to(logosHDR[2], { autoAlpha:1, duration:0.5           })
     .to(logosHDR[2], { autoAlpha:0, duration:0.5, delay:4  })
-    .to(logosHDR[3], { autoAlpha:1, duration:0.5           })
-    .to(logosHDR[3], { autoAlpha:0, duration:0.5, delay:4  });
+    // .to(logosHDR[3], { autoAlpha:1, duration:0.5           })
+    // .to(logosHDR[3], { autoAlpha:0, duration:0.5, delay:4  })
+    // .to(logosHDR[4], { autoAlpha:1, duration:0.5           })
+    // .to(logosHDR[4], { autoAlpha:0, duration:0.5, delay:4  });
 
   let carouselLogoAnimationPPlus = gsap.timeline({ repeat: -1 });
   let logosPPlus = document.querySelectorAll(".omg.pplus .carousel_logo > div");
@@ -164,12 +167,77 @@ LoadEverything().then(() => {
     let data = event.data;
     let oldData = event.oldData;
 
-    let isTeams = Object.keys(data.score[window.scoreboardNumber].team["1"].player).length > 1;
+    // Commentators
+    if (
+      Object.keys(oldData).length == 0 ||
+      Object.keys(oldData.commentary).length !=
+        Object.keys(data.commentary).length
+    ) {
+      let html = "";
+      Object.values(data.commentary).forEach((commentator, index) => {
+        let namePrio = "";
+        if (commentator.twitter) namePrio = `<div class="twitter"></div>`;
+        else if (commentator.name) namePrio = `<div class="name"></div>`;
+        else if (commentator.real_name) namePrio = `<div class="real_name"></div>`;
 
+        html += `
+          <div class="commentator${index + 1}">
+            ${namePrio}
+          </div>
+        `;
+      });
+      $(".commentators._inner").html(html);
+
+      
+      let countFilled = 0;
+      for (const [index, commentator] of Object.values(
+        data.commentary
+      ).entries()) {
+        if (commentator.twitter || commentator.name || commentator.real_name) {          
+          $(`.commentator${index + 1}`).css("display", "");
+          countFilled++;
+          
+          SetInnerHtml(
+            $(`.commentator${index + 1} .twitter`),
+            commentator.twitter
+              ? `<span class="twitter_logo"></span>${String(commentator.twitter)}`
+              : ""
+          );
+
+          SetInnerHtml(
+            $(`.commentator${index + 1} .name`),
+            `
+              ${commentator.team ? `<span class="sponsor">${commentator.team}</span>` : ""}
+              ${await Transcript(commentator.name)}
+            `
+          );
+
+          SetInnerHtml(
+            $(`.commentator${index + 1} .real_name`),
+            commentator.real_name
+          );
+        } else {
+          // $(`.commentator${index + 1}`).css("display", "none");
+        }
+      }
+      
+      if (countFilled == 0) {                           // please avert your eyes. i'm so tired
+        $(".commentators._inner").html(`<div><div class="text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🦗</div></div>`);
+      }
+      else if (countFilled > 2) {
+        $(`.commentary .text`).css({
+          "font-size": `calc(80px / ${countFilled})`,
+          "margin-bottom": `calc(8px / ${countFilled})`
+        });
+      }
+    };
+
+    // Everything else
     const points = [];
     points.push(document.querySelector(".p1.points"));
     points.push(document.querySelector(".p2.points"));
     
+    let isTeams = Object.keys(data.score[window.scoreboardNumber].team["1"].player).length > 1;
     if (!isTeams) {
       for (const [t, team] of [
         data.score[window.scoreboardNumber].team["1"],
@@ -232,7 +300,6 @@ LoadEverything().then(() => {
                 : ""
             );
             
-            // TODO: repeat this for other carousel socials?
             SetInnerHtml(
               $(`.p${t + 1} .twitter`),
               player.twitter
@@ -278,7 +345,6 @@ LoadEverything().then(() => {
 
         let names = [];
         let namesSponsored = [];
-        console.log(Object.values(team.player));
         for (const [p, player] of Object.values(team.player).entries()) {
           if (player && player.name) {
             names.push(await Transcript(player.name));
