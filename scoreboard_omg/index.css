@@ -797,9 +797,9 @@ footer {
   height: 456px;
 }
 .omg.hdr .player_cam._outer {
-  background: rgba(0,0,0,0.8);
+  /* background: rgba(0,0,0,0.8); */
   border: 2px solid rgba(255,255,255,0.8);
-  border-radius: calc(var(--border-radius) / 2);
+  /* border-radius: calc(var(--border-radius) / 2); */
   height: calc(16px + 162px + 16px);  /* distance to battle portrait (BP) bottom + BP height + distance */
   width: calc(194px * 16 / 9);
   margin: 8px;

@@ -45,10 +45,10 @@ LoadEverything().then(() => {
     .to(logosHDR[1], { autoAlpha:0, duration:0.5, delay:4  })
     .to(logosHDR[2], { autoAlpha:1, duration:0.5           })
     .to(logosHDR[2], { autoAlpha:0, duration:0.5, delay:4  })
-    .to(logosHDR[3], { autoAlpha:1, duration:0.5           })
-    .to(logosHDR[3], { autoAlpha:0, duration:0.5, delay:4  })
-    .to(logosHDR[4], { autoAlpha:1, duration:0.5           })
-    .to(logosHDR[4], { autoAlpha:0, duration:0.5, delay:4  });
+    // .to(logosHDR[3], { autoAlpha:1, duration:0.5           })
+    // .to(logosHDR[3], { autoAlpha:0, duration:0.5, delay:4  })
+    // .to(logosHDR[4], { autoAlpha:1, duration:0.5           })
+    // .to(logosHDR[4], { autoAlpha:0, duration:0.5, delay:4  });
 
   let carouselLogoAnimationPPlus = gsap.timeline({ repeat: -1 });
   let logosPPlus = document.querySelectorAll(".omg.pplus .carousel_logo > div");
