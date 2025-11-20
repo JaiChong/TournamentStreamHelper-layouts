@@ -22,8 +22,8 @@
 .dev3 {background:#f228 !important; z-index:99999;}
 .dev2 {background:#e848 !important; z-index:99999;}
 .dev1 {background:#dc66 !important; z-index:99999;}
-.dev0 {background:#9de6 !important; z-index:99999;} */
-.devh {display:none !important;}
+.dev0 {background:#9de6 !important; z-index:99999;}
+.devh {display:none !important;} */
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -111,7 +111,9 @@ body.omg.hdr {
 }
 .omg.pplus .game_overlay._outer {
   width: calc(1368px - 4px);  /* overlapping 2px side panel borders */
-  justify-self: center;
+  /* justify-self: center; */
+  left: 50%;
+  transform: translateX(-50%);
 }
 .omg.hdr .game_overlay._outer {
   width: 1920px;
@@ -128,11 +130,13 @@ body.omg.hdr {
   bottom: 8px;  /* HACK */
 }
 .panel._outer._left {
-  justify-self: left;
+  /* justify-self: left; */
   align-content: start;
+  left: 0;
 }
 .panel._outer._right {
-  justify-self: right;
+  /* justify-self: right; */
+  right: 0;
 }
 
 .panel._inner {
@@ -185,7 +189,9 @@ body.omg.hdr {
 footer {
   position: absolute;
   bottom: 0;
-  justify-self: center;
+  /* justify-self: center; */
+  left: 50%;
+  transform: translate(-50%);
 }
 .omg.pplus footer {
   margin-bottom: 4px;
@@ -219,12 +225,12 @@ footer {
 }
 .omg.pplus .logo:not(._event):not(._game) {
   position: absolute;
-  inset: 0;
+  /* inset: 0; */
   width: 110px;
   height: 110px;
-  justify-self: center;
+  /* justify-self: center; */
   align-self: center;
-  transform: unset;
+  /* transform: unset; */
 }
 .logo._bsc {
   background-image: url("org_bsc.png");
@@ -262,10 +268,12 @@ footer {
 .scoreboard {
   display: flex;
   position: absolute;
-  justify-self: center;
+  /* justify-self: center; */
   justify-content: center;
   align-items: flex-start;
   gap: 4px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 /* formerly .info.container.bottom */
@@ -557,7 +565,8 @@ footer {
 }
 
 .corner_top._left._outer {
-  justify-self: left;
+  /* justify-self: left; */
+  left: 0;
   margin: 37px 25px 8px 32px; /* top & right match timer's top & left, down mirror parent's padding-top, left match blastzone preview box */
   height: calc(122px - 16px - 37px);  /* blastzone preview box top - 8px parent padding-top - 8px balance - 37px margin-top */
   width: calc(228px - 8px);   /* HACK: width to reach bo20 scoreboard - 8px padding */
@@ -605,12 +614,15 @@ footer {
   height: 50px;
 }
 .omg.pplus .carousel_logo {
-  position: relative;
+  /* position: relative; */
+  position: absolute;
   width: 110px;
   height: 110px;
-  justify-self: center;
-  align-self: center;
+  /* justify-self: center; */
+  /* align-self: center; */
   top: 30px;
+  left: 50%;
+  transform: translate(-50%);
 }
 
 .carousel_text {
@@ -837,7 +849,7 @@ footer {
 .omg .chips {
   position: static;
   left: unset;
-  justify-self: center;
+  /* justify-self: center; */
   width: fit-content;
   max-width: 100%;
   padding: 0 5px;
