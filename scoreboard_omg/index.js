@@ -28,7 +28,7 @@ LoadEverything().then(() => {
   //   { day:"sun", time:"14", name:"P+ Top 8:",         stream:"twitch" },
   //   { day:"sun", time:"17", name:"HDR Top 8:",        stream:"twitch" },
   // ];
-
+  
 
   // 2. Set, Run animations
   
@@ -45,10 +45,10 @@ LoadEverything().then(() => {
     .to(logosHDR[1], { autoAlpha:0, duration:0.5, delay:4  })
     .to(logosHDR[2], { autoAlpha:1, duration:0.5           })
     .to(logosHDR[2], { autoAlpha:0, duration:0.5, delay:4  })
-    // .to(logosHDR[3], { autoAlpha:1, duration:0.5           })
-    // .to(logosHDR[3], { autoAlpha:0, duration:0.5, delay:4  })
-    // .to(logosHDR[4], { autoAlpha:1, duration:0.5           })
-    // .to(logosHDR[4], { autoAlpha:0, duration:0.5, delay:4  });
+    .to(logosHDR[3], { autoAlpha:1, duration:0.5           })
+    .to(logosHDR[3], { autoAlpha:0, duration:0.5, delay:4  })
+    .to(logosHDR[4], { autoAlpha:1, duration:0.5           })
+    .to(logosHDR[4], { autoAlpha:0, duration:0.5, delay:4  });
 
   let carouselLogoAnimationPPlus = gsap.timeline({ repeat: -1 });
   let logosPPlus = document.querySelectorAll(".omg.pplus .carousel_logo > div");
@@ -56,7 +56,7 @@ LoadEverything().then(() => {
   for (let i = 0; i < logosPPlus.length; i++) {
     carouselLogoAnimationPPlus
       .to(logosPPlus[i], { autoAlpha:1, duration:0.5           })
-      .to(logosPPlus[i], { autoAlpha:0, duration:0.5, delay:19 });
+      .to(logosPPlus[i], { autoAlpha:0, duration:0.5, delay:14 });
   }
   
   let carouselTextAnimation = gsap.timeline({ repeat: -1 });
@@ -167,6 +167,9 @@ LoadEverything().then(() => {
     let data = event.data;
     let oldData = event.oldData;
 
+    // Other Event Stream Links
+    
+    
     // Commentators
     if (
       Object.keys(oldData).length == 0 ||
@@ -221,8 +224,8 @@ LoadEverything().then(() => {
         }
       }
       
-      if (countFilled == 0) {                           // please avert your eyes. i'm so tired
-        $(".commentators._inner").html(`<div><div class="text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🦗</div></div>`);
+      if (countFilled == 0) {
+        $(".commentators._inner").html(`<div><div class="cricket">🦗</div></div>`);
       }
       else if (countFilled > 2) {
         $(`.commentary .text`).css({
