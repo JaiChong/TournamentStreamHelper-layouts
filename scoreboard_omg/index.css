@@ -86,8 +86,8 @@ body.omg.hdr {
   /* url("./test_imgs/hdr_sss2.png"), */
   /* url("./test_imgs/hdr_match_load.png"), */
   /* url("./test_imgs/hdr_match_start.png"), */
-  /* url("./test_imgs/hdr_match_magnet.png"), */
-  /* url("./test_imgs/hdr_match_kill.png"),
+  /* url("./test_imgs/hdr_match_magnet.png"),
+  url("./test_imgs/hdr_match_kill.png"),
   url("./test_imgs/hdr_match_respawn.png"),
   url("./test_imgs/hdr_match_doubles.png"),
   url("./test_imgs/hdr_rss1.png"),
@@ -123,20 +123,27 @@ body.omg.hdr {
   width: calc((1920px - 1368px) / 2);
   height: 1080px;
 }
-.omg.hdr .panel._outer {
-  position: absolute;
-  width: calc(377px - 8px);
-  height: calc(1080px - 16px - 378px - 8px);  /* HACK */
-  bottom: 8px;  /* HACK */
-}
-.panel._outer._left {
+.omg.pplus .panel._outer._left {
   /* justify-self: left; */
   align-content: start;
   left: 0;
 }
-.panel._outer._right {
+.omg.pplus .panel._outer._right {
   /* justify-self: right; */
   right: 0;
+}
+
+.omg.hdr .panel._outer {
+  position: absolute;
+  width: calc(377px - 8px);
+  height: calc(1080px - 16px - 378px - 8px);  /* HACK */
+  bottom: 16px;  /* HACK */
+}
+.omg.hdr .panel._outer._left {
+  left: 16px;
+}
+.omg.hdr .panel._outer._right {
+  right: 16px;
 }
 
 .panel._inner {
@@ -564,9 +571,9 @@ footer {
   position: absolute;
 }
 
-.corner_top._left._outer {
+.omg.hdr .corner_top._left._outer {
   /* justify-self: left; */
-  left: 0;
+  left: 8px;
   margin: 37px 25px 8px 32px; /* top & right match timer's top & left, down mirror parent's padding-top, left match blastzone preview box */
   height: calc(122px - 16px - 37px);  /* blastzone preview box top - 8px parent padding-top - 8px balance - 37px margin-top */
   width: calc(228px - 8px);   /* HACK: width to reach bo20 scoreboard - 8px padding */
@@ -600,7 +607,7 @@ footer {
 }
 
 /* .corner_top._right._outer {
-  justify-self: right;
+  right: 8px;
   height: 378px;  aligned with blastzone preview box bottom
 }
 .corner_top._right._inner {
@@ -806,8 +813,11 @@ footer {
   opacity: 0.1;
 }
 
+
 .player_cam._outer {
   align-self: end;
+}
+.omg.pplus .player_cam._outer {
   margin-bottom: 6px;
   height: 456px;
 }
@@ -817,7 +827,7 @@ footer {
   /* border-radius: calc(var(--border-radius) / 2); */
   height: calc(16px + 162px + 16px);  /* distance to battle portrait (BP) bottom + BP height + distance */
   width: calc(194px * 16 / 9);
-  margin: 8px;
+  /* margin: 8px; */
 }
 .omg.hdr .p1.player_cam._outer {
   align-self:unset;
@@ -846,6 +856,15 @@ footer {
   align-content: center;
   overflow: hidden;
 }
+/* .p1.chips {
+  left: 380px;
+}
+.p2.chips {
+flex-direction: row-reverse;
+  left: 1040px;
+  justify-content: left;
+} */
+
 .omg .chips {
   position: static;
   left: unset;
@@ -856,32 +875,24 @@ footer {
   justify-content: center;
   gap: 4px;
 }
-.omg.hdr .chips {
-  position: absolute;
-  bottom: 14px;
-  max-width: 334px;
-  /* z-index:99999; */
-}
-
-/* .p1.chips {
-  left: 380px;
-} */
-/* .p2.chips {
-flex-direction: row-reverse;
-  left: 1040px;
-  justify-content: left;
-} */
 .omg .p1.chips {
   flex-direction: row-reverse;
 }
 .omg .p2.chips {
   flex-direction: row;
 }
+
+.omg.hdr .chips {
+  position: absolute;
+  bottom: 4px;
+  max-width: 334px;
+  /* z-index:99999; */
+}
 .omg.hdr .p1.chips {
-  left: 14px;
+  left: 4px;
 }
 .omg.hdr .p2.chips {
-  right: 14px;
+  right: 4px;
 }
 
 .chip {
