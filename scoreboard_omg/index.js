@@ -219,8 +219,8 @@ LoadEverything().then(() => {
             $(`.commentator${index + 1} .real_name`),
             commentator.real_name
           );
-        } else {
-          // $(`.commentator${index + 1}`).css("display", "none");
+        // } else {
+        //   $(`.commentator${index + 1}`).css("display", "none");
         }
       }
       
@@ -248,6 +248,7 @@ LoadEverything().then(() => {
       ].entries()) {
         for (const [p, player] of [team.player["1"]].entries()) {
           if (player) {
+
             SetInnerHtml(
               $(`.p${t + 1}.container .name`),
               `
@@ -333,11 +334,13 @@ LoadEverything().then(() => {
               ? points[t].children[i].classList.add("active")
               : points[t].children[i].classList.remove("active");
             }
+
           }
         }
-        if(team.color && !tsh_settings["forceDefaultScoreColors"]) {
-          document.querySelector(':root').style.setProperty(`--p${t + 1}-score-bg-color`, team.color);
-        }
+
+        // if(team.color && !tsh_settings["forceDefaultScoreColors"]) {
+        //   document.querySelector(':root').style.setProperty(`--p${t + 1}-score-bg-color`, team.color);
+        // }
       }
     } else {
       for (const [t, team] of [
@@ -394,16 +397,16 @@ LoadEverything().then(() => {
         );
 
         // NOTE: repurposed inexplicitly
-        SetInnerHtml($(`.p${t + 1} .twitter`), 
-          playerNames != teamName ? playerNamesSponsored : ""
+        SetInnerHtml(
+          $(`.p${t + 1} .twitter`), 
+          playerNamesSponsored != teamName ? playerNamesSponsored : ""
         );
 
         SetInnerHtml(
-          $(`.p${t + 1} .pronoun`),
-          ""
-        );
+          $(`.p${t + 1} .pronoun`), "");
 
-        SetInnerHtml($(`.p${t + 1} .seed`), 
+        SetInnerHtml(
+          $(`.p${t + 1} .seed`), 
           team.player[1].seed ? `Seed ${team.player[1].seed}` : ""
         );
 
