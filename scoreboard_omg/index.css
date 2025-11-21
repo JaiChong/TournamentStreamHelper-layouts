@@ -67,17 +67,17 @@ body {
 
 body.omg.pplus {
   background-image:
-    /* url("./p+_background.png"); */
-    url("./p+_background.png"),
+    url("./p+_background.png");
+    /* url("./p+_background.png"), */
     /* url("./test_imgs/p+_css.png"), */
     /* url("./test_imgs/p+_sss.png"), */
-    url("./test_imgs/p+_match.png"),
+    /* url("./test_imgs/p+_match.png"), */
     /* url("./test_imgs/p+_rss1.png"), */
     /* url("./test_imgs/p+_rss2.png"), */
     /* url("./test_imgs/p+_rss3.png"), */
     /* url("./test_imgs/p+_rss4.png"), */
     /* url("./test_imgs/p+_rss5.png"), */
-    url("./test_imgs/p+_playercams.png");
+    /* url("./test_imgs/p+_playercams.png"); */
 }
 body.omg.hdr {
   /* background-image: */
@@ -96,6 +96,42 @@ body.omg.hdr {
   url("./test_imgs/hdr_rss4.png"),
   url("./test_imgs/hdr_rss5.png"),
   url("./test_imgs/hdr_load.png"); */
+}
+
+
+/* Commentator Scene */
+.lined_background {
+  position: absolute;
+  width: 1920px;
+  height: 1088px;
+  top: -8px;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.9) 0px,
+    rgba(0,0,0,0.9) 4px,
+    rgba(24,24,24,0.9) 4px,
+    rgba(24,24,24,0.9) 8px
+  );
+  animation: scrollLines 1s linear infinite;
+}
+@keyframes scrollLines {
+  0% {
+    background-position-y: 0;
+  }
+  100% {
+    background-position-y: 8px;
+  }
+}
+
+.commentator_cam {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 479px;
+  aspect-ratio: 16/9;
+  background: rgba(0,0,0,0.8);
+  border: 2px solid rgba(255,255,255,0.8);
 }
 
 

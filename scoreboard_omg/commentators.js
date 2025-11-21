@@ -321,20 +321,18 @@ LoadEverything().then(() => {
               player.seed ? `Seed ${player.seed}` : ""
             );
             
-            if (points[t]) {
-              if (data.score[window.scoreboardNumber].first_to) {
-                for (let i = 0; i < points[t]?.children?.length; i++) {
-                  i < data.score[window.scoreboardNumber].first_to
-                  ? points[t].children[i].style.display = "block"
-                  : points[t].children[i].style.display = "none";
-                }
+            if (data.score[window.scoreboardNumber].first_to) {
+              for (let i = 0; i < points[t].children.length; i++) {
+                i < data.score[window.scoreboardNumber].first_to
+                ? points[t].children[i].style.display = "block"
+                : points[t].children[i].style.display = "none";
               }
-  
-              for (let i = 0; i < data.score[window.scoreboardNumber].first_to; i++) {
-                i < team.score
-                ? points[t].children[i].classList.add("active")
-                : points[t].children[i].classList.remove("active");
-              }
+            }
+
+            for (let i = 0; i < data.score[window.scoreboardNumber].first_to; i++) {
+              i < team.score
+              ? points[t].children[i].classList.add("active")
+              : points[t].children[i].classList.remove("active");
             }
 
           }
@@ -412,20 +410,18 @@ LoadEverything().then(() => {
           team.player[1].seed ? `Seed ${team.player[1].seed}` : ""
         );
 
-        if (points[t]) {
-          if (data.score[window.scoreboardNumber].first_to) {
-            for (let i = 0; i < points[t].children.length; i++) {
-              i < data.score[window.scoreboardNumber].first_to
-              ? points[t].children[i].style.display = "block"
-              : points[t].children[i].style.display = "none";
-            }
+        if (data.score[window.scoreboardNumber].first_to) {
+          for (let i = 0; i < points[t].children.length; i++) {
+            i < data.score[window.scoreboardNumber].first_to
+            ? points[t].children[i].style.display = "block"
+            : points[t].children[i].style.display = "none";
           }
-  
-          for (let i = 0; i < data.score[window.scoreboardNumber].first_to; i++) {
-            i < team.score
-            ? points[t].children[i].classList.add("active")
-            : points[t].children[i].classList.remove("active");
-          }
+        }
+
+        for (let i = 0; i < data.score[window.scoreboardNumber].first_to; i++) {
+          i < team.score
+          ? points[t].children[i].classList.add("active")
+          : points[t].children[i].classList.remove("active");
         }
 
         if(team.color) {
