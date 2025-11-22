@@ -5,34 +5,29 @@
 
 LoadEverything().then(() => {
   
-  // 1. globals
 
-  // TODO: write table to inner HTML
-  // TODO: API key
-  // const dataEvents = [
-  //   { day:"sat", time:"11", name:"P+ Doubles:",       stream:"twitch" },
-  //   { day:"sat", time:"11", name:"HDR Doubles:",      stream:"twitch" },
-  //   { day:"sat", time:"13", name:"P+ Wave A:",        stream:"twitch" },
-  //   { day:"sat", time:"13", name:"HDR Wave A:",       stream:"twitch" },
-  //   { day:"sat", time:"15", name:"P+ Wave B:",        stream:"twitch" },
-  //   { day:"sat", time:"15", name:"HDR Wave B:",       stream:"twitch" },
-
-  //   { day:"sat", time:"17", name:"P+ Gold Bracket:",  stream:"twitch" },
-  //   { day:"sat", time:"17", name:"HDR Gold Bracket:", stream:"twitch" },
-    
-  //   { day:"sat", time:"20", name:"Special Event:",    stream:"twitch" },
-    
-  //   { day:"sun", time:"11", name:"Melee:",            stream:"twitch" },
-  //   { day:"sun", time:"11", name:"Rivals 2:",         stream:"twitch" },
-  //   { day:"sun", time:"11", name:"Ultimate:",         stream:"twitch" },
-  //   { day:"sun", time:"14", name:"P+ Top 8:",         stream:"twitch" },
-  //   { day:"sun", time:"17", name:"HDR Top 8:",        stream:"twitch" },
-  // ];
-  
-
-  // 2. Set, Run animations
+  // 1. Set, Run animations
   
   gsap.config({ nullTargetWarn: false, trialWarn: false });
+
+  let carouselLogoAnimationBRB = gsap.timeline({ repeat: -1 });
+  let logosBRB = document.querySelectorAll(".omg.brb .carousel_logo > div");
+  gsap.set(logosBRB, { autoAlpha: 0 });
+  carouselLogoAnimationBRB
+    .to(logosBRB[0], { autoAlpha:1, duration:0.5, delay:25 })
+    .to(logosBRB[0], { autoAlpha:0, duration:0.5, delay: 4 })
+    .to(logosBRB[1], { autoAlpha:1, duration:0.5           })
+    .to(logosBRB[1], { autoAlpha:0, duration:0.5, delay: 4 })
+    .to(logosBRB[2], { autoAlpha:1, duration:0.5           })
+    .to(logosBRB[2], { autoAlpha:0, duration:0.5, delay: 4 })
+    .to(logosBRB[3], { autoAlpha:1, duration:0.5           })
+    .to(logosBRB[3], { autoAlpha:0, duration:0.5, delay: 4 })
+    .to(logosBRB[4], { autoAlpha:1, duration:0.5           })
+    .to(logosBRB[4], { autoAlpha:0, duration:0.5, delay: 4 })
+    .to(logosBRB[5], { autoAlpha:1, duration:0.5           })
+    .to(logosBRB[5], { autoAlpha:0, duration:0.5, delay: 4 })
+    .to(logosBRB[6], { autoAlpha:1, duration:0.5           })
+    .to(logosBRB[6], { autoAlpha:0, duration:0.5, delay: 4 });
 
   let carouselLogoAnimationHDR = gsap.timeline({ repeat: -1 });
   let logosHDR = document.querySelectorAll(".omg.hdr .carousel_logo > div");
@@ -41,13 +36,17 @@ LoadEverything().then(() => {
     .to(logosHDR[0], { autoAlpha:1, duration:0.5           })
     .to(logosHDR[0], { autoAlpha:0, duration:0.5, delay:34 })
     .to(logosHDR[1], { autoAlpha:1, duration:0.5           })
-    .to(logosHDR[1], { autoAlpha:0, duration:0.5, delay:4  })
+    .to(logosHDR[1], { autoAlpha:0, duration:0.5, delay: 4 })
     .to(logosHDR[2], { autoAlpha:1, duration:0.5           })
-    .to(logosHDR[2], { autoAlpha:0, duration:0.5, delay:4  })
+    .to(logosHDR[2], { autoAlpha:0, duration:0.5, delay: 4 })
     .to(logosHDR[3], { autoAlpha:1, duration:0.5           })
-    .to(logosHDR[3], { autoAlpha:0, duration:0.5, delay:4  })
+    .to(logosHDR[3], { autoAlpha:0, duration:0.5, delay: 4 })
     .to(logosHDR[4], { autoAlpha:1, duration:0.5           })
-    .to(logosHDR[4], { autoAlpha:0, duration:0.5, delay:4  });
+    .to(logosBRB[4], { autoAlpha:0, duration:0.5, delay: 4 })
+    .to(logosBRB[5], { autoAlpha:1, duration:0.5           })
+    .to(logosBRB[5], { autoAlpha:0, duration:0.5, delay: 4 })
+    .to(logosBRB[6], { autoAlpha:1, duration:0.5           })
+    .to(logosBRB[6], { autoAlpha:0, duration:0.5, delay: 4 });
 
   let carouselLogoAnimationPPlus = gsap.timeline({ repeat: -1 });
   let logosPPlus = document.querySelectorAll(".omg.pplus .carousel_logo > div");
@@ -155,21 +154,19 @@ LoadEverything().then(() => {
 
   Start = async () => {
     startingAnimation.restart();
-    // carouselLogoAnimationPPlus.restart();
+    carouselLogoAnimationPPlus.restart();
     carouselLogoAnimationHDR.restart();
+    carouselLogoAnimationBRB.restart();
     carouselTextAnimation.restart();
   };
 
 
-  // 3. Set data
+  // 2. Set data
   Update = async (event) => {
     let data = event.data;
     let oldData = event.oldData;
 
-    // Other Event Stream Links
-    
-    
-    // Commentators
+    // Set Commentator Data
     if (
       Object.keys(oldData).length == 0 ||
       Object.keys(oldData.commentary).length !=
@@ -195,29 +192,59 @@ LoadEverything().then(() => {
       for (const [index, commentator] of Object.values(
         data.commentary
       ).entries()) {
-        if (commentator.twitter || commentator.name || commentator.real_name) {          
+        if (commentator) {          
           $(`.commentator${index + 1}`).css("display", "");
-          countFilled++;
+          countFilled++;          
+          
+          if (commentator.twitter) {
+            SetInnerHtml(
+              $(`.commentator${index + 1} .twitter`),
+              commentator.twitter
+                ? `<span class="icon _twitter"></span>${String(commentator.twitter)}`
+                : ""
+            );
+          } else if (commentator.name) {
+            SetInnerHtml(
+              $(`.commentator${index + 1} .name`),
+              `
+                ${commentator.team ? `<span class="sponsor">${commentator.team}</span>` : ""}
+                ${await Transcript(commentator.name)}
+              `
+            );
+          } else if (commentator.real_name) {
+            SetInnerHtml(
+              $(`.commentator${index + 1} .real_name`),
+              commentator.real_name
+            );
+          }
+          else {
+            $(`.commentator${index + 1}`).css("display", "none");
+            countFilled--;
+          }
           
           SetInnerHtml(
-            $(`.commentator${index + 1} .twitter`),
-            commentator.twitter
-              ? `<span class="twitter_logo"></span>${String(commentator.twitter)}`
-              : ""
-          );
-
-          SetInnerHtml(
-            $(`.commentator${index + 1} .name`),
+            $(`.commentator${index + 1} .flagcountry`),
+            commentator.country.asset
+            ? `
+            <div class='flag' style='background-image: url(../../${commentator.country.asset.toLowerCase()})'></div>
+            <!-- <div>${commentator.country.code}</div> -->
             `
-              ${commentator.team ? `<span class="sponsor">${commentator.team}</span>` : ""}
-              ${await Transcript(commentator.name)}
-            `
+            : ""
           );
-
           SetInnerHtml(
-            $(`.commentator${index + 1} .real_name`),
-            commentator.real_name
+            $(`.commentator${index + 1} .flagstate`),
+            commentator.state.asset
+            ? `
+            <div class='flag' style='background-image: url(../../${commentator.state.asset})'></div>
+            <!-- <div>${commentator.state.code}</div> -->
+            `
+            : ""
           );
+          SetInnerHtml(
+            $(`.commentator${index + 1} .pronoun`),
+            commentator.pronoun ? commentator.pronoun : ""
+          );
+          console.log(commentator.pronoun);
         // } else {
         //   $(`.commentator${index + 1}`).css("display", "none");
         }
@@ -234,11 +261,12 @@ LoadEverything().then(() => {
       }
     };
 
-    // Everything else
+    // Set Points Data
     const points = [];
     points.push(document.querySelector(".p1.points"));
     points.push(document.querySelector(".p2.points"));
     
+    // Set Player Data
     let isTeams = Object.keys(data.score[window.scoreboardNumber].team["1"].player).length > 1;
     if (!isTeams) {
       for (const [t, team] of [
@@ -306,7 +334,7 @@ LoadEverything().then(() => {
             SetInnerHtml(
               $(`.p${t + 1} .twitter`),
               player.twitter
-                ? `<span class="twitter_logo"></span>${String(player.twitter)}`
+                ? `<span class="icon _twitter"></span>${String(player.twitter)}`
                 : ""
             );
 
