@@ -737,9 +737,11 @@ footer {
 .omg.hdr .carousel_text > div.logo {
   width: 100%;
 }
+/* .carousel_text div.streams, */
 .carousel_text div.org_socials {
   text-align: left;
 }
+/* .omg.hdr .carousel_text div.streams, */
 .omg.hdr .carousel_text div.org_socials {
   left: 0;
 }
@@ -764,16 +766,29 @@ footer {
   font-size: 12px;
 }
 
-.org_socials tr:last-child {
-  display: flex;
-  flex-direction: row;
-}
+.streams td,
 .org_socials td {
-  display: flex;
   margin: 0;
   padding: 0;
   color: white;
   font-size: 12px;
+}
+.streams td:first-child {
+  text-align: right;
+}
+.streams td:not(:first-child) {
+  padding-left: 8px;
+}
+.omg.pplus .streams td:nth-child(2) {
+  text-align: center;
+}
+.streams td:last-child,
+.org_socials td {
+  display: flex;
+}
+.org_socials tr:last-child {
+  display: flex;
+  flex-direction: row;
 }
 .org_socials tr:last-child td:first-child {
   margin-right: 12px;

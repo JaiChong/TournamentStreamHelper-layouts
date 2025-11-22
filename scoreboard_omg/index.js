@@ -39,8 +39,7 @@ LoadEverything().then(() => {
   gsap.set(logosHDR, { autoAlpha: 0 });
   carouselLogoAnimationHDR
     .to(logosHDR[0], { autoAlpha:1, duration:0.5           })
-    // .to(logosHDR[0], { autoAlpha:0, duration:0.5, delay:44 })
-    .to(logosHDR[0], { autoAlpha:0, duration:0.5, delay:24 })
+    .to(logosHDR[0], { autoAlpha:0, duration:0.5, delay:34 })
     .to(logosHDR[1], { autoAlpha:1, duration:0.5           })
     .to(logosHDR[1], { autoAlpha:0, duration:0.5, delay:4  })
     .to(logosHDR[2], { autoAlpha:1, duration:0.5           })
@@ -156,7 +155,7 @@ LoadEverything().then(() => {
 
   Start = async () => {
     startingAnimation.restart();
-    carouselLogoAnimationPPlus.restart();
+    // carouselLogoAnimationPPlus.restart();
     carouselLogoAnimationHDR.restart();
     carouselTextAnimation.restart();
   };
