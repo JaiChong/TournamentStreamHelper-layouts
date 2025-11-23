@@ -13,40 +13,20 @@ LoadEverything().then(() => {
   let carouselLogoAnimationBRB = gsap.timeline({ repeat: -1 });
   let logosBRB = document.querySelectorAll(".omg.brb .carousel_logo > div");
   gsap.set(logosBRB, { autoAlpha: 0 });
-  carouselLogoAnimationBRB
-    .to(logosBRB[0], { autoAlpha:1, duration:0.5, delay:25 })
-    .to(logosBRB[0], { autoAlpha:0, duration:0.5, delay: 4 })
-    .to(logosBRB[1], { autoAlpha:1, duration:0.5           })
-    .to(logosBRB[1], { autoAlpha:0, duration:0.5, delay: 4 })
-    .to(logosBRB[2], { autoAlpha:1, duration:0.5           })
-    .to(logosBRB[2], { autoAlpha:0, duration:0.5, delay: 4 })
-    .to(logosBRB[3], { autoAlpha:1, duration:0.5           })
-    .to(logosBRB[3], { autoAlpha:0, duration:0.5, delay: 4 })
-    .to(logosBRB[4], { autoAlpha:1, duration:0.5           })
-    .to(logosBRB[4], { autoAlpha:0, duration:0.5, delay: 4 })
-    .to(logosBRB[5], { autoAlpha:1, duration:0.5           })
-    .to(logosBRB[5], { autoAlpha:0, duration:0.5, delay: 4 })
-    .to(logosBRB[6], { autoAlpha:1, duration:0.5           })
-    .to(logosBRB[6], { autoAlpha:0, duration:0.5, delay: 4 });
+  for (let i = 0; i < logosBRB.length; i++) {
+    carouselLogoAnimationBRB
+      .to(logosBRB[i], { autoAlpha:1, duration:0.5, delay:((i == 0) ? 25 : 0) })
+      .to(logosBRB[i], { autoAlpha:0, duration:0.5, delay:4 });
+  }
 
   let carouselLogoAnimationHDR = gsap.timeline({ repeat: -1 });
   let logosHDR = document.querySelectorAll(".omg.hdr .carousel_logo > div");
   gsap.set(logosHDR, { autoAlpha: 0 });
-  carouselLogoAnimationHDR
-    .to(logosHDR[0], { autoAlpha:1, duration:0.5           })
-    .to(logosHDR[0], { autoAlpha:0, duration:0.5, delay:34 })
-    .to(logosHDR[1], { autoAlpha:1, duration:0.5           })
-    .to(logosHDR[1], { autoAlpha:0, duration:0.5, delay: 4 })
-    .to(logosHDR[2], { autoAlpha:1, duration:0.5           })
-    .to(logosHDR[2], { autoAlpha:0, duration:0.5, delay: 4 })
-    .to(logosHDR[3], { autoAlpha:1, duration:0.5           })
-    .to(logosHDR[3], { autoAlpha:0, duration:0.5, delay: 4 })
-    .to(logosHDR[4], { autoAlpha:1, duration:0.5           })
-    .to(logosBRB[4], { autoAlpha:0, duration:0.5, delay: 4 })
-    .to(logosBRB[5], { autoAlpha:1, duration:0.5           })
-    .to(logosBRB[5], { autoAlpha:0, duration:0.5, delay: 4 })
-    .to(logosBRB[6], { autoAlpha:1, duration:0.5           })
-    .to(logosBRB[6], { autoAlpha:0, duration:0.5, delay: 4 });
+  for (let i = 0; i < logosHDR.length; i++) {
+    carouselLogoAnimationHDR
+      .to(logosHDR[i], { autoAlpha:1, duration:0.5 })
+      .to(logosHDR[i], { autoAlpha:0, duration:0.5, delay:((i == 0) ? 34 : 4) });
+  }
 
   let carouselLogoAnimationPPlus = gsap.timeline({ repeat: -1 });
   let logosPPlus = document.querySelectorAll(".omg.pplus .carousel_logo > div");
@@ -163,116 +143,131 @@ LoadEverything().then(() => {
 
   // 2. Set data
   Update = async (event) => {
-    let data = event.data;
-    let oldData = event.oldData;
+    // let data = event.data;
+    // let oldData = event.oldData;
+
+    // if (
+    //   Object.keys(oldData).length == 0 ||
+    //   Object.keys(oldData.commentary).length !=
+    //     Object.keys(data.commentary).length
+    // ) ...
 
     // Set Commentator Data
-    if (
-      Object.keys(oldData).length == 0 ||
-      Object.keys(oldData.commentary).length !=
-        Object.keys(data.commentary).length
-    ) {
-      let html = "";
-      Object.values(data.commentary).forEach((commentator, index) => {
-        let namePrio = "";
-        if (commentator.twitter) namePrio = `<div class="twitter"></div>`;
-        else if (commentator.name) namePrio = `<div class="name"></div>`;
-        else if (commentator.real_name) namePrio = `<div class="real_name"></div>`;
+    let html = "";
+    Object.values(data.commentary).forEach((commentator, index) => {
+      let namePrio = "";
+      if (commentator.twitter) namePrio = `<div class="twitter"></div>`;
+      else if (commentator.name) namePrio = `<div class="name"></div>`;
+      else if (commentator.real_name) namePrio = `<div class="real_name"></div>`;
 
-        html += `
-          <div class="commentator${index + 1}">
-            ${namePrio}
-          </div>
-        `;
-      });
-      $(".commentators._inner").html(html);
+      html += `
+        <div class="commentator${index + 1}">
+          ${namePrio}
+        </div>
+      `;
+    });
+    $(".commentators._inner").html(html);
 
-      
-      let countFilled = 0;
-      for (const [index, commentator] of Object.values(
-        data.commentary
-      ).entries()) {
-        if (commentator) {          
-          $(`.commentator${index + 1}`).css("display", "");
-          countFilled++;          
-          
-          if (commentator.twitter) {
-            SetInnerHtml(
-              $(`.commentator${index + 1} .twitter`),
-              commentator.twitter
-                ? `<span class="icon _twitter"></span>${String(commentator.twitter)}`
-                : ""
-            );
-          } else if (commentator.name) {
-            SetInnerHtml(
-              $(`.commentator${index + 1} .name`),
-              `
-                ${commentator.team ? `<span class="sponsor">${commentator.team}</span>` : ""}
-                ${await Transcript(commentator.name)}
-              `
-            );
-          } else if (commentator.real_name) {
-            SetInnerHtml(
-              $(`.commentator${index + 1} .real_name`),
-              commentator.real_name
-            );
-          }
-          else {
-            $(`.commentator${index + 1}`).css("display", "none");
-            countFilled--;
-          }
-          
+    let countFilled = 0;
+    for (const [index, commentator] of Object.values(
+      data.commentary
+    ).entries()) {
+      if (commentator) {          
+        // $(`.commentator${index + 1}`).css("display", "");
+        countFilled++;
+        
+        if (commentator.twitter) {
           SetInnerHtml(
-            $(`.commentator${index + 1} .flagcountry`),
-            commentator.country.asset
-            ? `
-            <div class='flag' style='background-image: url(../../${commentator.country.asset.toLowerCase()})'></div>
-            <!-- <div>${commentator.country.code}</div> -->
+            $(`.commentator${index + 1} .twitter`),
+            commentator.twitter
+              ? `<span class="icon _twitter"></span>${String(commentator.twitter)}`
+              : ""
+          );
+        } else if (commentator.name) {
+          SetInnerHtml(
+            $(`.commentator${index + 1} .name`),
             `
-            : ""
-          );
-          SetInnerHtml(
-            $(`.commentator${index + 1} .flagstate`),
-            commentator.state.asset
-            ? `
-            <div class='flag' style='background-image: url(../../${commentator.state.asset})'></div>
-            <!-- <div>${commentator.state.code}</div> -->
+              ${commentator.team ? `<span class="sponsor">${commentator.team}</span>` : ""}
+              ${await Transcript(commentator.name)}
             `
-            : ""
           );
+        } else if (commentator.real_name) {
           SetInnerHtml(
-            $(`.commentator${index + 1} .pronoun`),
-            commentator.pronoun ? commentator.pronoun : ""
+            $(`.commentator${index + 1} .real_name`),
+            commentator.real_name
           );
-          console.log(commentator.pronoun);
-        // } else {
-        //   $(`.commentator${index + 1}`).css("display", "none");
         }
+        else {
+          $(`.comms_board .commentator${index + 1}`).html(`<div><div class="cricket">🦗</div></div>`);
+          countFilled--;
+        }
+        
+        SetInnerHtml(
+          $(`.commentator${index + 1} .flagcountry`),
+          commentator.country.asset
+          ? `
+          <div class='flag' style='background-image: url(../../${commentator.country.asset.toLowerCase()})'></div>
+          <!-- <div>${commentator.country.code}</div> -->
+          `
+          : ""
+        );
+        SetInnerHtml(
+          $(`.commentator${index + 1} .flagstate`),
+          commentator.state.asset
+          ? `
+          <div class='flag' style='background-image: url(../../${commentator.state.asset})'></div>
+          <!-- <div>${commentator.state.code}</div> -->
+          `
+          : ""
+        );
+        SetInnerHtml(
+          $(`.commentator${index + 1} .pronoun`),
+          commentator.pronoun ? commentator.pronoun : ""
+        );
+        console.log(commentator.pronoun);
+      // } else {
+      //   $(`.commentator${index + 1}`).css("display", "none");
       }
-      
-      if (countFilled == 0) {
-        $(".commentators._inner").html(`<div><div class="cricket">🦗</div></div>`);
-      }
-      else if (countFilled > 2) {
-        $(`.commentary .text`).css({
-          "font-size": `calc(80px / ${countFilled})`,
-          "margin-bottom": `calc(8px / ${countFilled})`
-        });
-      }
-    };
+    }
+    
+    if (countFilled == 0) {
+      $(".commentators._inner").html(`<div><div class="cricket">🦗</div></div>`);
+    }
+    else if (countFilled > 2) {
+      $(`.commentary .text`).css({
+        "font-size": `calc(80px / ${countFilled})`,
+        "margin-bottom": `calc(8px / ${countFilled})`
+      });
+    }
 
-    // Set Points Data
+    // Set Player Data
     const points = [];
     points.push(document.querySelector(".p1.points"));
     points.push(document.querySelector(".p2.points"));
-    
-    // Set Player Data
     let isTeams = Object.keys(data.score[window.scoreboardNumber].team["1"].player).length > 1;
     if (!isTeams) {
       for (const [t, team] of [
         data.score[window.scoreboardNumber].team["1"],
         data.score[window.scoreboardNumber].team["2"],
       ].entries()) {
+        // Set Points Data
+        if (points[t]) {
+          let first_to = (data.score[window.scoreboardNumber].first_to ?? 3)
+          first_to = Math.min(first_to, 5);
+
+          for (let i = 0; i < points[t].children.length; i++) {
+            i < first_to
+              ? points[t].children[i].style.display = "block"
+              : points[t].children[i].style.display = "none";
+          }
+
+          for (let i = 0; i < data.score[window.scoreboardNumber].first_to; i++) {
+            i < team.score
+              ? points[t].children[i].classList.add("active")
+              : points[t].children[i].classList.remove("active");
+          }
+        }
+
         for (const [p, player] of [team.player["1"]].entries()) {
           if (player) {
 
@@ -347,22 +342,6 @@ LoadEverything().then(() => {
               $(`.p${t + 1} .seed`),
               player.seed ? `Seed ${player.seed}` : ""
             );
-            
-            if (points[t]) {
-              if (data.score[window.scoreboardNumber].first_to) {
-                for (let i = 0; i < points[t]?.children?.length; i++) {
-                  i < data.score[window.scoreboardNumber].first_to
-                  ? points[t].children[i].style.display = "block"
-                  : points[t].children[i].style.display = "none";
-                }
-              }
-  
-              for (let i = 0; i < data.score[window.scoreboardNumber].first_to; i++) {
-                i < team.score
-                ? points[t].children[i].classList.add("active")
-                : points[t].children[i].classList.remove("active");
-              }
-            }
 
           }
         }
@@ -438,22 +417,6 @@ LoadEverything().then(() => {
           $(`.p${t + 1} .seed`), 
           team.player[1].seed ? `Seed ${team.player[1].seed}` : ""
         );
-
-        if (points[t]) {
-          if (data.score[window.scoreboardNumber].first_to) {
-            for (let i = 0; i < points[t].children.length; i++) {
-              i < data.score[window.scoreboardNumber].first_to
-              ? points[t].children[i].style.display = "block"
-              : points[t].children[i].style.display = "none";
-            }
-          }
-  
-          for (let i = 0; i < data.score[window.scoreboardNumber].first_to; i++) {
-            i < team.score
-            ? points[t].children[i].classList.add("active")
-            : points[t].children[i].classList.remove("active");
-          }
-        }
 
         if(team.color) {
           document.querySelector(':root').style.setProperty(`--p${t + 1}-score-bg-color`, team.color);

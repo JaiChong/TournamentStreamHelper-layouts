@@ -220,7 +220,7 @@ body.omg.hdr {
 .comms_board {
   display: flex;
   position: absolute;
-  justify-content: center;
+  justify-content: left;
   align-items: flex-start;
   left: 50%;
   transform: translateX(-50%);
@@ -246,8 +246,7 @@ footer {
   bottom: 16px;
 }
 .omg.comms footer.comms_board {
-  width: unset;
-  height: unset;
+  width: calc(600px + 142px);
   bottom: 96px;
 }
 
@@ -460,11 +459,10 @@ footer {
 }
 .logo._bsc {
   background-image: url("logos/org_bsc.png");
-  /* 2035x2022 */
 }
-.logo._tempest {
+/* .logo._tempest {
   background-image: url("logos/org_tempest.png");
-}
+} */
 .logo._uwsmash {
   background-image: url("logos/org_uwsmash.png");
   border-radius: 31.25%;
@@ -537,11 +535,11 @@ footer {
   -webkit-mask-image: url(icons/youtube.png);
 }
 
-.carousel_text .cricket {
+.cricket {
   transform: scale(1.75,1.75);
 }
 .omg.pplus .commentary .cricket {
-  font-size: 28px;
+  /* font-size: 28px; */
   margin-left: 23%;
   margin-right: 77%;
 }
