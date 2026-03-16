@@ -65,6 +65,9 @@ body {
   display: none;
 }
 
+body.omg.thanks {
+  background: black;
+}
 body.omg.pplus {
   background-image:
     url("./p+_background.png");
